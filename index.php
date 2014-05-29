@@ -8,6 +8,7 @@
 	        body {
 	            margin-top: 20px;
 	            margin-bottom: 20px;
+	            min-height: 1000px;
 	        }
 	        navbar {
 	            margin-bottom: 20px;

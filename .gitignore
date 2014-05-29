@@ -1,1 +1,4 @@
 *.un~
+lib/db_connect.php
+.DS_Store
+api/

@@ -20,6 +20,3 @@ var Project = Backbone.Model.extend({
     }
 
 });
-
-var project = new Project({ name: ' ', description: '' });
-project.validate();
