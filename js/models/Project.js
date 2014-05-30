@@ -1,10 +1,13 @@
 var Project = Backbone.Model.extend({
+    url: '_api/project/',
+    
     defaults: {
-        name    :   '',
-        description :   ''
+        name    :   'hey',
+        description :   'buddy',
     },
 
     initialize: function() {
+        if (this.get(''))
         alert('project initialized');
     },
 
@@ -19,4 +22,16 @@ var Project = Backbone.Model.extend({
         } 
     }
 
+});
+
+var project = new Project({ id: 1 });
+project.fetch({
+    success: function(model, response, options) {
+        console.log(model.toJSON());
+
+    },
+    error: function(model, response, options) {
+        console.log('errored out');
+        console.log(response);
+    }
 });
