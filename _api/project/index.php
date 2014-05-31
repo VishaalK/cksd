@@ -2,8 +2,9 @@
 //header('Content-Type: application/json');
 require '../../lib/db_connect.php';
 $request = $_SERVER['REQUEST_METHOD'];
+echo $request . "\n";
 
-echo file_get_contents('php://input');
+echo json_encode(json_decode(file_get_contents('php://input'), true));
 
 if ($request === 'GET') {
 	if (!array_key_exists('id', $_REQUEST)) {
