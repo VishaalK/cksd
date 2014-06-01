@@ -8,3 +8,6 @@ var ProjectView = Backbone.View.extend({
 
 });
 
+var projectView = new ProjectView({ model: project });
+projectView.render();
+$('#')
