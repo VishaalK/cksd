@@ -4,13 +4,13 @@ var Project = Backbone.Model.extend({
     localStorage: new Backbone.LocalStorage("projects-backbone"),
 
     defaults: {
-        title    :   'hey',
+        title    :      'hey',
         description :   'buddy',
         isDropIn:       false,
     },
 
     initialize: function() {
-        console.log('project initialized');
+        console.log('project ' + this.get('title') + ' initialized');
     },
 
     validate: function() {
@@ -28,3 +28,4 @@ var Project = Backbone.Model.extend({
 });
 
 var project = new Project({ title: 'Ann Arbor District Library Tutoring', description: 'Tutor kids at the Ann Arbor District Library' });
+var project2 = new Project({ title: 'Ozone House', description: '45th Anniversary Event for the Ozone Blouse' });

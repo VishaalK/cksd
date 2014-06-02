@@ -83,6 +83,8 @@
     <script src="js/utils/backbone.localStorage.js"></script>
 	<script src="js/models/Project.js"></script>
 	<script src="js/views/ProjectView.js"></script>
+	<script src="js/collections/Projects.js"></script>
+	<script src="js/views/ProjectsView.js"></script>
 	</body>
 
 </html>	
