@@ -1,7 +1,9 @@
 var ProjectView = Backbone.View.extend({
 	//template: _.template($('#ProjectViewTemplate').html()),
-	className: 'well',
-	template: _.template('<b> <%= title %> </b>: <p> <%= description %> </p> Is drop in?: <%= (isDropIn) ? "Yes" : "No" %>'),
+	//template: _.template('<b>  <%= title %> </b>: <p> <%= description %> </p>  Is drop in?: <%= (isDropIn) ? "Yes" : "No" %>'),
+	
+	className: 'row info',
+	template: _.template('<div class="col-md-2">  Is Drop In?: <%= (isDropIn) ? "Yes" : "No" %> <p> maxSignups: <%= maxSignups %> </p></div><div class="col-md-10"> <%= title %> </b>: <p> <%= description %> </p> </div>'),
 
 	events: {
 		'dblclick' : 'edit' 
