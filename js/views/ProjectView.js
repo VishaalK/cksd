@@ -2,7 +2,7 @@ var ProjectView = Backbone.View.extend({
 	//template: _.template($('#ProjectViewTemplate').html()),
 	//template: _.template('<b>  <%= title %> </b>: <p> <%= description %> </p>  Is drop in?: <%= (isDropIn) ? "Yes" : "No" %>'),
 	
-	className: 'row info',
+	className: 'row well',
 	template: _.template('<div class="media" style="padding: 4px 4px;"> <a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/64x64"> </a> \
 							<div class="media-body"> \
 								<h6 class="media-heading"> <%= title %> </h6> <div class="pull-right"> hello </div>\
@@ -24,6 +24,13 @@ var ProjectView = Backbone.View.extend({
 								</div> \
 							</div> \
 						</div>'),
+	template: _.template('<div class="col-md-1"> <a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/64x64"> </a></div><div class="col-md-9"> \
+								<b><%= title %></b><br> \
+								<p><%= description %></p> \
+						</div> \
+						<div class="col-md-1"> \
+							<span class="pull-right"><%= maxSignups %> </span>\
+						</div><div class="col-md-1"></div>'),
 
 	//template: _.template('<div class="col-md-2">  Is Drop In?: <%= (isDropIn) ? "Yes" : "No" %> <p> maxSignups: <%= maxSignups %> </p></div><div class="col-md-10"> <%= title %> </b>: <p> <%= description %> </p> </div>'),
 

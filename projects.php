@@ -64,8 +64,8 @@
 	<h3> Please work </h3>
 	
 	<div class="container">
-		<div class="row-fluid">
-			<div class="col-md-10 col-md-offset-1" id="ProjectsContainer">
+
+			<div id="ProjectsContainer">
 
 			</div>
 		</div>
