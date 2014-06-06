@@ -29,13 +29,19 @@ var ProjectView = Backbone.View.extend({
 								<p><%= description %></p> \
 						</div> \
 						<div class="col-md-1"> \
-							<span class="pull-right"><%= maxSignups %> </span>\
+							<span class="pull-right"><%= maxSignups %> </span> \
+							<a class="remove"><span class="glyphicon glyphicon-remove"></span></a> \
 						</div><div class="col-md-1"></div>'),
 
 	//template: _.template('<div class="col-md-2">  Is Drop In?: <%= (isDropIn) ? "Yes" : "No" %> <p> maxSignups: <%= maxSignups %> </p></div><div class="col-md-10"> <%= title %> </b>: <p> <%= description %> </p> </div>'),
+	initialize: function() {
+		this.listenTo(this.model, 'destroy', this.remove);
+	},
+
 
 	events: {
-		'dblclick' : 'edit' 
+		'click a.remove' 	: 'clear',
+		'dblclick' 			: 'edit' 
 	},
 
 	render: function() {
@@ -47,6 +53,13 @@ var ProjectView = Backbone.View.extend({
 	edit: function(e) {
 		e.preventDefault();
 		console.log('edit for ' + this.model.get('title') + ' clicked');
+	},
+
+	clear: function() {
+		//delete the Project from
+		if (confirm('Are you sure you want to delete this project?')) {
+			this.model.destroy();
+		}
 	}
 
 });
