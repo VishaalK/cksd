@@ -28,5 +28,5 @@ var Project = Backbone.Model.extend({
 
 });
 
-var project = new Project({ title: 'Ann Arbor District Library Tutoring', description: 'Tutor kids at the Ann Arbor District Library' });
-var project2 = new Project({ title: 'Ozone House', description: '45th Anniversary Event for the Ozone Blouse' });
+// var project = new Project({ title: 'Ann Arbor District Library Tutoring', description: 'Tutor kids at the Ann Arbor District Library' });
+// var project2 = new Project({ title: 'Ozone House', description: '45th Anniversary Event for the Ozone Blouse' });

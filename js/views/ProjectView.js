@@ -45,8 +45,6 @@ var ProjectView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log('render called');
-		alert('clicks');
 		this.$el.html(this.template(this.model.attributes));
 	},
 

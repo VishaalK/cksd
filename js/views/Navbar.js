@@ -15,6 +15,7 @@ var Navbar = Backbone.View.extend({
 	render: function() {
 		//var template =  _.template($('#NavbarTemplate').html());
 		var template = _.template($('#NavbarTemplate').html());
+		//will eventually fill this with a get request to the current session ?
 		this.$el.html(template({ name: 'Vishaal Kalwani' }));
 	}
 
