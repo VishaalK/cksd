@@ -7,12 +7,19 @@ var Project = Backbone.Model.extend({
         title               :   'hey',
         description         :   'buddy',
         isDropIn            :   false,
-        maxSignups          :   0,
         bigGroupFriendly    :   false,
+        needsDriver         :   false,
+        startTime           :   null,
+        endTime             :   null,
+        status              :   'open', // one of 'closed' (gray), 'open' (green), 'full' (blue), 'cancelled' (orange)
+        maxSignups          :   5,
     },
 
     initialize: function() {
         console.log('project ' + this.get('title') + ' initialized');
+        this.set('startTime', Date.now());
+        this.set('endTime', new Date());
+        console.log(this.get('endTime') - this.get('startTime'));
     },
 
     validate: function() {
@@ -25,9 +32,12 @@ var Project = Backbone.Model.extend({
             return "Description cannot be empty";
         } 
         console.log('that shit was valid!!');
-    }
+    },
+
 
 });
 
-// var project = new Project({ title: 'Ann Arbor District Library Tutoring', description: 'Tutor kids at the Ann Arbor District Library' });
-// var project2 = new Project({ title: 'Ozone House', description: '45th Anniversary Event for the Ozone Blouse' });
+// var project = new Project({ title: 'Ann Arbor District Library Tutoring', description: 'Tutor kids at the Ann Arbor District Library', status: 'open' });
+// var project2 = new Project({ title: 'Ozone House', description: '45th Anniversary Event for the Ozone Blouse', status: 'closed' });
+// project.save();
+// project2.save();
