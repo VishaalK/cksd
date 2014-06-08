@@ -4,10 +4,11 @@ var Project = Backbone.Model.extend({
     localStorage: new Backbone.LocalStorage("projects-backbone"),
 
     defaults: {
-        title       :   'hey',
-        description :   'buddy',
-        isDropIn    :   false,
-        maxSignups  :   0,
+        title               :   'hey',
+        description         :   'buddy',
+        isDropIn            :   false,
+        maxSignups          :   0,
+        bigGroupFriendly    :   false,
     },
 
     initialize: function() {

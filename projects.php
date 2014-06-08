@@ -78,6 +78,8 @@
 	  Launch demo modal
 	</button>
 
+	<input type="datetime-local"></input>
+
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
@@ -108,6 +110,9 @@
 					<label class="checkbox-inline">
 						<input type="checkbox" id="inlineCheckbox2" value="option2"> Is Drop In?
 					</label>
+				</div>
+				<div class="form-group">
+					Nerdy <input type="datetime-local" name="bdaytime">
 				</div>
 			</form>
 	      </div>
