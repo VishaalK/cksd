@@ -4,11 +4,10 @@
 		<title> Service Day | Projects </title>
         <meta charset="utf-8"></head>
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/sticky-footer.css" rel="stylesheet">
         <style>
 	        body {
 	            margin-top: 20px;
-	            margin-bottom: 20px;
-	            min-height: 1000px;
 	        }
 	        navbar {
 	            margin-bottom: 20px;
@@ -124,10 +123,14 @@
 	  </div>
 	</div>
 	<footer>
-	</footer>
+        <div class="container">
+        <div class="row">
+        <div class="col-md-4"><span class="text-center">buttcheeks</span></div>
+        <div class="col-md-4">buttcheeks</div>
+        <div class="col-md-4">buttcheeks</div>
+        </div>
+    </footer>
 
-	heyy
-	<p> Why isn't this working </p>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- jQuery -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"> </script> <!-- underscore.js -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"> </script> <!-- backbone.js -->

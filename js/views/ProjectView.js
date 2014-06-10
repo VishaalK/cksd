@@ -25,14 +25,13 @@ var ProjectView = Backbone.View.extend({
 	// 						</div> \
 	// 					</div>'),
 	template: _.template('<div class="col-md-1"> <a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/64x64"> </a></div><div class="col-md-9"> \
-								<b><%= title %></b><br> \
+								<b><%= title %></b> <span name="status" class="label"><%= status %></span> \
 								<p><%= description %></p> \
 								<p>Start Time: <%= startTime %> - End Time: <%= endTime %> </p> \
 						</div> \
 						<div class="col-md-1"> \
 							<span class="pull-right"><%= maxSignups %> </span> \
 							<a id="#remove" class="remove"><span class="glyphicon glyphicon-remove"></span></a> \
-							<span name="status" class="label"><%= status %></span> \
 						</div><div class="col-md-1"></div>'),
 
 	//template: _.template('<div class="col-md-2">  Is Drop In?: <%= (isDropIn) ? "Yes" : "No" %> <p> maxSignups: <%= maxSignups %> </p></div><div class="col-md-10"> <%= title %> </b>: <p> <%= description %> </p> </div>'),
@@ -48,7 +47,10 @@ var ProjectView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.template(this.model.attributes));
+		this.showStatus();		
+	},
 
+	showStatus: function() {
 		var label = this.$el.find('[name=status]');
 		switch(this.model.get('status')) {
 			case 'open':
