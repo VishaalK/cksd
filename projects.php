@@ -62,7 +62,7 @@
 	<header class="container" id="NavbarContainer">
 	</header>
 
-	<h3> Please work </h3>
+	<h3 class="text-center"> List of Projects <span class="glyphicon glyphicon-fire"></span></h3>
 	
 	<div class="container">
 
@@ -72,17 +72,12 @@
 		</div>
 	</div>
 	
-	<!-- Button trigger modal -->
-	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-	  Launch demo modal
-	</button>
-
-	<input type="datetime-local"></input>
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
+
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title" id="myModalLabel">Add a New Project</h4>
@@ -100,9 +95,16 @@
 				<div class="form-group">
 					<label for="exampleInputFile">Project Picture (optional)</label>
 					<input type="file" id="exampleInputFile">
-					<p class="help-block">Give your project some pizzazz!</p>
+					<label for="status"> Status </label>
+					<select class="form-control">
+						<option>Open</option>
+						<option>Closed</option>
+						<option>Full</option>
+						<option>Cancelled</option>
+					</select>
+
 				</div>
-				<div>
+				<div class="form-group">
 					<label class="checkbox-inline">
 						<input type="checkbox" id="inlineCheckbox1" value="option1"> Large Group Friendly?
 					</label>
@@ -122,12 +124,92 @@
 	    </div>
 	  </div>
 	</div>
-	<footer>
+
+	<div class="container">
+	<form class="form-horizontal">
+	<fieldset>
+
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="name">Project Name</label>  
+	  <div class="col-md-5">
+	  <input id="name" name="name" placeholder="" class="form-control input-md" required="" type="text">
+	    
+	  </div>
+	</div>
+
+	<!-- Textarea -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="description">Project Description</label>
+	  <div class="col-md-4">                     
+	    <textarea class="form-control" id="description" name="description"></textarea>
+	  </div>
+	</div>
+
+	<!-- Multiple Checkboxes (inline) -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="checkboxes"></label>
+	  <div class="col-md-4">
+	    <label class="checkbox-inline" for="checkboxes-0">
+	      <input name="checkboxes" id="checkboxes-0" value="dropIn" type="checkbox">
+	      Drop in?
+	    </label>
+	    <label class="checkbox-inline" for="checkboxes-1">
+	      <input name="checkboxes" id="checkboxes-1" value="largeGroupFriendly" type="checkbox">
+	      Large group friendly?
+	    </label>
+	  </div>
+	</div>
+
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="status">Project Status</label>
+	  <div class="col-md-4">
+	    <select id="status" name="status" class="form-control">
+	      <option value="open">Open</option>
+	      <option value="closed">Closed</option>
+	      <option value="full">Full</option>
+	      <option value="cancelled">Cancelled</option>
+	    </select>
+	  </div>
+	</div>
+
+	<!-- File Button --> 
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="picture">Picture</label>
+	  <div class="col-md-4">
+	    <input id="picture" name="picture" class="input-file" type="file">
+	  </div>
+	</div>
+
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="submit"></label>
+	  <div class="col-md-4">
+	    <button id="submit" name="submit" class="btn btn-success">Submit</button>
+	  </div>
+	</div>
+
+	</fieldset>
+	</form>
+	</div>
+    <footer>
         <div class="container">
         <div class="row">
-        <div class="col-md-4"><span class="text-center">buttcheeks</span></div>
-        <div class="col-md-4">buttcheeks</div>
-        <div class="col-md-4">buttcheeks</div>
+        <div class="col-md-4 column">
+        	<p class="center-block footer-information">
+        		Sint bitters beard skateboard fugiat ad VHS. Quis cupidatat keffiyeh umami food
+        truck, art party 
+        	</p>
+        </div>
+        <div class="col-md-4 column"><p class="center-block">
+        	Sint bitters beard skateboard fugiat ad VHS. Quis cupidatat keffiyeh umami food
+        truck, art party
+        </p></div>
+        <div class="col-md-4 column"><p class="center-block">
+        	Sint bitters beard skateboard fugiat ad VHS. Quis cupidatat keffiyeh umami food
+        truck, art party
+        </p></div>
         </div>
     </footer>
 
