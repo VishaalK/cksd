@@ -125,74 +125,77 @@
 	  </div>
 	</div>
 
-	<div class="container">
-	<form class="form-horizontal">
-	<fieldset>
+	<div id="newProjectForm" class="container hidden">
+		<form class="form-horizontal">
+		<fieldset>
 
-	<!-- Text input-->
-	<div class="form-group">
-	  <label class="col-md-4 control-label" for="name">Project Name</label>  
-	  <div class="col-md-5">
-	  <input id="name" name="name" placeholder="" class="form-control input-md" required="" type="text">
-	    
-	  </div>
-	</div>
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="name">Project Name</label>  
+		  <div class="col-md-5">
+		  <input id="name" name="name" placeholder="" class="form-control input-md" required="" type="text">
+		    
+		  </div>
+		</div>
 
-	<!-- Textarea -->
-	<div class="form-group">
-	  <label class="col-md-4 control-label" for="description">Project Description</label>
-	  <div class="col-md-4">                     
-	    <textarea class="form-control" id="description" name="description"></textarea>
-	  </div>
-	</div>
+		<!-- Textarea -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="description">Project Description</label>
+		  <div class="col-md-4">                     
+		    <textarea class="form-control" id="description" name="description"></textarea>
+		  </div>
+		</div>
 
-	<!-- Multiple Checkboxes (inline) -->
-	<div class="form-group">
-	  <label class="col-md-4 control-label" for="checkboxes"></label>
-	  <div class="col-md-4">
-	    <label class="checkbox-inline" for="checkboxes-0">
-	      <input name="checkboxes" id="checkboxes-0" value="dropIn" type="checkbox">
-	      Drop in?
-	    </label>
-	    <label class="checkbox-inline" for="checkboxes-1">
-	      <input name="checkboxes" id="checkboxes-1" value="largeGroupFriendly" type="checkbox">
-	      Large group friendly?
-	    </label>
-	  </div>
-	</div>
+		<!-- Multiple Checkboxes (inline) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="checkboxes"></label>
+		  <div class="col-md-4">
+		    <label class="checkbox-inline" for="checkboxes-0">
+		      <input name="checkboxes" id="checkboxes-0" value="dropIn" type="checkbox">
+		      Drop in?
+		    </label>
+		    <label class="checkbox-inline" for="checkboxes-1">
+		      <input name="checkboxes" id="checkboxes-1" value="largeGroupFriendly" type="checkbox">
+		      Large group friendly?
+		    </label>
+		  </div>
+		</div>
 
-	<!-- Select Basic -->
-	<div class="form-group">
-	  <label class="col-md-4 control-label" for="status">Project Status</label>
-	  <div class="col-md-4">
-	    <select id="status" name="status" class="form-control">
-	      <option value="open">Open</option>
-	      <option value="closed">Closed</option>
-	      <option value="full">Full</option>
-	      <option value="cancelled">Cancelled</option>
-	    </select>
-	  </div>
-	</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="status">Project Status</label>
+		  <div class="col-md-4">
+		    <select id="status" name="status" class="form-control">
+		      <option value="open">Open</option>
+		      <option value="closed">Closed</option>
+		      <option value="full">Full</option>
+		      <option value="cancelled">Cancelled</option>
+		    </select>
+		  </div>
+		</div>
 
-	<!-- File Button --> 
-	<div class="form-group">
-	  <label class="col-md-4 control-label" for="picture">Picture</label>
-	  <div class="col-md-4">
-	    <input id="picture" name="picture" class="input-file" type="file">
-	  </div>
-	</div>
+		<!-- File Button --> 
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="picture">Picture</label>
+		  <div class="col-md-4">
+		    <input id="picture" name="picture" class="input-file" type="file">
+		  </div>
+		</div>
 
-	<!-- Button -->
-	<div class="form-group">
-	  <label class="col-md-4 control-label" for="submit"></label>
-	  <div class="col-md-4">
-	    <button id="submit" name="submit" class="btn btn-success">Submit</button>
-	  </div>
-	</div>
+		<!-- Button -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="submit"></label>
+		  <div class="col-md-4">
+		    <button id="submit" name="submit" type="button" class="btn btn-success">Submit</button>
+		  </div>
+		</div>
 
-	</fieldset>
-	</form>
+		</fieldset>
+		</form>
 	</div>
+	
+
+
     <footer>
         <div class="container">
         <div class="row">
@@ -213,6 +216,14 @@
         </div>
     </footer>
 
+	<!--<iframe
+	width="600"
+	height="450"
+	frameborder="0" style="border:0"
+	src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBE-XXBUF3En8bk2p-PTvZYQnzXOvKT1-8
+	&q=Space+Needle,Seattle+WA">
+	</iframe> -->
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- jQuery -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"> </script> <!-- underscore.js -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"> </script> <!-- backbone.js -->
@@ -223,6 +234,7 @@
 	<script src="js/views/ProjectView.js"></script>
 	<script src="js/collections/Projects.js"></script>
 	<script src="js/views/ProjectsView.js"></script>
+	<!-- <script src="js/views/AddProjectView.js"></script> -->
 	</body>
 
 </html>	
