@@ -13,6 +13,7 @@ var Project = Backbone.Model.extend({
         endTime             :   null,
         status              :   'open', // one of 'closed' (gray), 'open' (green), 'full' (blue), 'cancelled' (orange)
         maxSignups          :   5,
+        siteLeader          :   'austinas'
     },
 
     initialize: function() {

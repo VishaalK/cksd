@@ -5,6 +5,7 @@
         <meta charset="utf-8"></head>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/sticky-footer.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
         <style>
 	        body {
 	            margin-top: 20px;
@@ -92,6 +93,9 @@
 					<label for="exampleInputPassword1">Description</label>
 					<textarea class="form-control" id="exampleInputPassword1" placeholder="Password"></textarea>
 				</div>
+
+
+
 				<div class="form-group">
 					<label for="exampleInputFile">Project Picture (optional)</label>
 					<input type="file" id="exampleInputFile">
@@ -125,7 +129,7 @@
 	  </div>
 	</div>
 
-	<div id="newProjectForm" class="container hidden">
+	<div id="newProjectForm" class="container">
 		<form class="form-horizontal">
 		<fieldset>
 
@@ -133,11 +137,17 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="name">Project Name</label>  
 		  <div class="col-md-5">
-		  <input id="name" name="name" placeholder="" class="form-control input-md" required="" type="text">
-		    
+		  	<input id="name" name="name" placeholder="" class="form-control input-md" required="" type="text">
 		  </div>
+
 		</div>
 
+		<div class="form-group">
+	  		<label class="col-md-4 control-label" for="name">Site Leader</label> 
+	 	 	<div class="col-md-5">
+		  		<input id="siteLeader" name="siteLeader" placeholder="austinas" class="form-control input-md" required type="text">
+		  	</div>
+		</div>
 		<!-- Textarea -->
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="description">Project Description</label>
@@ -145,6 +155,17 @@
 		    <textarea class="form-control" id="description" name="description"></textarea>
 		  </div>
 		</div>
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="startTime"> Start &amp; End Time</label>			
+        	<div class='col-md-3'>
+            	<input type='text' class="form-control" id="startTime"/>
+        	</div>
+        	<div class='col-md-3'>
+        		<input type='text' class='form-control' id="endTime" />
+        	</div>
+    	</div>
+
 
 		<!-- Multiple Checkboxes (inline) -->
 		<div class="form-group">
@@ -234,6 +255,29 @@
 	<script src="js/views/ProjectView.js"></script>
 	<script src="js/collections/Projects.js"></script>
 	<script src="js/views/ProjectsView.js"></script>
+	<script type="text/javascript" src="js/utils/moment.min.js"></script>
+	<script type="text/javascript" src="js/utils/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript">
+            $(function () {
+                $('#startTime').datetimepicker({
+                	defaultDate: "11/17/2014 10:00 AM",
+                	minDate: "11/17/2014",
+                	maxDate: "11/18/2014 10:00 PM",
+                	sideBySide: true,
+                	useStrict: true
+                });
+            });
+
+            $(function () {
+                $('#endTime').datetimepicker({
+                	defaultDate: "11/17/2014 05:00 PM",
+                	minDate: "11/17/2014",
+                	maxDate: "11/18/2014 10:00 PM",
+                	sideBySide: true,
+                	useStrict: true
+                });
+            });
+        </script>
 	<!-- <script src="js/views/AddProjectView.js"></script> -->
 	</body>
 
