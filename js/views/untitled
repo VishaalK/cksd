@@ -1,5 +1,0 @@
-var Test = Backbone.View.extend({
-	initialize: function
-});
-
-var test  = new Test({ })

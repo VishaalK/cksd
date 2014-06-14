@@ -152,7 +152,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="description">Project Description</label>
 		  <div class="col-md-4">                     
-		    <textarea class="form-control" id="description" name="description"></textarea>
+		    <textarea class="form-control" id="description" name="description" required=""></textarea>
 		  </div>
 		</div>
 
@@ -162,24 +162,35 @@
             	<input type='text' class="form-control" name="startTime" id="startTime"/>
         	</div>
         	<div class='col-md-3'>
-        		<input type='text' class='form-control' name="endtime" id="endTime" />
+        		<input type='text' class='form-control' name="endTime" id="endTime" />
         	</div>
     	</div>
 
 
 		<!-- Multiple Checkboxes (inline) -->
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="checkboxes"></label>
-		  <div class="col-md-4">
-		    <label class="checkbox-inline" for="checkboxes-0">
-		      <input name="checkboxes" id="checkboxes-0" value="dropIn" type="checkbox">
-		      Drop in?
-		    </label>
-		    <label class="checkbox-inline" for="checkboxes-1">
-		      <input name="checkboxes" id="checkboxes-1" value="largeGroupFriendly" type="checkbox">
-		      Large group friendly?
-		    </label>
-		  </div>
+		  	<label class="col-md-4 control-label" for="checkboxes"></label>
+		  	<div class="col-md-6">
+			    <label class="checkbox-inline">
+					<input type="checkbox" name="needsDriver" id="needsDriver" value="needsDriver"> <strong> Needs Driver? </strong>
+				</label>
+			    <label class="checkbox-inline">
+					<input type="checkbox" id="dropIn" name="dropIn" value="dropIn"> Drop In?
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" name="bigGroupFriendly" id="bigGroupFriendly" value="bigGroupFriendly"> Large Group Friendly?
+				</label>
+		 	</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="maxSignups">Max Signups</label>
+			<!-- <div class="col-md-1">
+				<input type="number" name="maxSignups">
+			</div> -->
+			<div class="col-md-1"> 
+				<input type='number' class='form-control' name='maxSignups' id='maxSignups' min="0" step="1" pattern="\d+"//>
+			</div>
 		</div>
 
 		<!-- Select Basic -->

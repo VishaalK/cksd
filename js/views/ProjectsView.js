@@ -13,7 +13,8 @@ var ProjectsView = Backbone.View.extend({
 			}
 		});
 		$('#submit').on('click', function(e) {
-			$this.addProject(e);
+            e.preventDefault();
+			$this.addProject();
 		});
 	},
 
@@ -46,42 +47,61 @@ var ProjectsView = Backbone.View.extend({
     	$('#newProjectForm').removeClass('hidden');
     },
 
-    getValues: function(e) {
-        e.preventDefault();
+    getValues: function() {
         var $this = this;
-        return values = {
-            'name'          : $('input[name=name]').val(),
-            'description'   : $('textarea[name=description]').val(),
-            'status'        : $('select[name=status]').val(),
-            'siteLeader'    : $('input[name=siteLeader]').val(),
-            'startTime'     : $('input[name=startTime]').val(),
-            'endTime'       : $('input[name=endTime]').val()
+        var values = {
+            'name'              : $('input[name=name]').val(),
+            'description'       : $('textarea[name=description]').val(),
+            'status'            : $('select[name=status]').val(),
+            'siteLeader'        : $('input[name=siteLeader]').val(),
+            'startTime'         : $('input[name=startTime]').val(),
+            'endTime'           : $('input[name=endTime]').val(),
+            'needsDriver'       : $('input[name=needsDriver]').is(':checked'),
+            'dropIn'            : $('input[name=dropIn]').is(':checked'),
+            'bigGroupFriendly'  : $('input[name=bigGroupFriendly]').is(':checked'),
+            'maxSignups'        : $('input[name=maxSignups]').val()
         };
-    }
+        values.maxSignups = parseInt(values.maxSignups, 10);
+        return values;
+    },
 
-    addProject: function(e) {
-    	console.log('addProject called');
-    	var $this = this;
-    	e.preventDefault();
-    	// Get values from form, create new model, push to server, on successful sync, render it
-    	var name = $('input[name=name]').val();
-    	console.log(name);
-    	var description = $('textarea[name=description]').val();
-    	var status = $('select[name=status]').val();
-    	console.log(description);
-    	console.log(status);
-    	var proj = new Project({ title: name, description: description, status: status });
-    	proj.save(null, {
-    		success: function(model, response, options) {
-    			//$this.addOne(model);
-    			console.log(proj.toJSON());
-    			$this.addOne(proj);
-    			console.log('success');
-    		},
-    		error: function(model, response, options) {
-    			console.log('There was an error saving the project to local storage...');
-    		}
-    	})
+    /* Called to trigger default HTML5 data validation */
+    validateData: function() {
+        // Transforms the data 
+        if (!$('input[name=maxSignups]')[0].checkValidity()) {
+            alert('not valid');
+            return false;
+        }
+        return true;
+        //escape all data so when its reflected it cant do XSS
+        // escape name
+        // escape description
+        // status is an enum so thats fine
+        // siteLeader should be typeahead and escaped (checkedg)
+        // startime validated against moment js
+        // endtime validated against moment js
+        // not way to screw up the checkboxes
+        // maxSignups should be intval'd
+    },
+
+    addProject: function() {
+        var $this = this;
+        var proj = new Project(this.getValues());
+        /*if (!this.validateData()) {
+            console.log('did not pass form validation');
+        }*/
+        // two levels of validation, form validation and then model saving validatoin
+        proj.save(null, {
+            success: function(model, response, options) {
+                console.log(proj.toJSON());
+                $this.addOne(proj);
+                console.log('success');
+            },
+            error: function(model, repsonse, options) {
+                console.log('ERRORR ERROR ALERRTT');
+                alert('will twerk for food');
+            }
+        });
     }
 });
 

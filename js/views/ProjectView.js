@@ -1,10 +1,10 @@
 var ProjectView = Backbone.View.extend({
 	//template: _.template($('#ProjectViewTemplate').html()),
-	//template: _.template('<b>  <%= title %> </b>: <p> <%= description %> </p>  Is drop in?: <%= (isDropIn) ? "Yes" : "No" %>'),
+	//template: _.template('<b>  <%= name %> </b>: <p> <%= description %> </p>  Is drop in?: <%= (isDropIn) ? "Yes" : "No" %>'),
 	
 	className: 'row well',
 	template: _.template('<div class="col-md-1"> <a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/64x64"> </a></div><div class="col-md-9"> \
-								<b><%= title %></b> <span name="status" class="label"><%= status %></span> \
+								<b><%= name %></b> <span name="status" class="label"><%= status %></span> \
 								<p><%= description %></p> \
 								<p>Start Time: <%= startTime %> - End Time: <%= endTime %> </p> \
 						</div> \
@@ -50,7 +50,7 @@ var ProjectView = Backbone.View.extend({
 
 	edit: function(e) {
 		e.preventDefault();
-		console.log('edit for ' + this.model.get('title') + ' clicked');
+		console.log('edit for ' + this.model.get('name') + ' clicked');
 	},
 
 	clear: function(e) {
