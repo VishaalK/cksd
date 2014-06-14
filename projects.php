@@ -159,10 +159,10 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="startTime"> Start &amp; End Time</label>			
         	<div class='col-md-3'>
-            	<input type='text' class="form-control" id="startTime"/>
+            	<input type='text' class="form-control" name="startTime" id="startTime"/>
         	</div>
         	<div class='col-md-3'>
-        		<input type='text' class='form-control' id="endTime" />
+        		<input type='text' class='form-control' name="endtime" id="endTime" />
         	</div>
     	</div>
 

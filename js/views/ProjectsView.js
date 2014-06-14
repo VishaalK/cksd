@@ -46,6 +46,19 @@ var ProjectsView = Backbone.View.extend({
     	$('#newProjectForm').removeClass('hidden');
     },
 
+    getValues: function(e) {
+        e.preventDefault();
+        var $this = this;
+        return values = {
+            'name'          : $('input[name=name]').val(),
+            'description'   : $('textarea[name=description]').val(),
+            'status'        : $('select[name=status]').val(),
+            'siteLeader'    : $('input[name=siteLeader]').val(),
+            'startTime'     : $('input[name=startTime]').val(),
+            'endTime'       : $('input[name=endTime]').val()
+        };
+    }
+
     addProject: function(e) {
     	console.log('addProject called');
     	var $this = this;
