@@ -1,9 +1,9 @@
 var ProjectsView = Backbone.View.extend({
 	template: _.template('<div id="#ProjectsList"> \
-        <div class="panel panel-default" style="width: 200px"> \
-          <div class="panel-heading">Panel heading without title</div> \
-          <div class="panel-body"> \
-            Panel content  \
+        <div class="panel panel-primary" style="width: 108px"> \
+          <div class="panel-heading"> Spots Open </div> \
+          <div class="panel-body text-center"> \
+            25  \
           </div> \
         </div> \
         </div> <div style="padding-bottom: 2px" class="row"> \
@@ -27,7 +27,6 @@ var ProjectsView = Backbone.View.extend({
 
 	events: {
 		'click #addProject'   : 'renderForm'
-		//"click #addProject" : 'renderProjectAddModal'
 	},
 
 	render: function() {
@@ -51,7 +50,7 @@ var ProjectsView = Backbone.View.extend({
     },
 
     renderForm: function() {
-    	$('#newProjectForm').removeClass('hidden');
+    	$('#newProjectForm').toggleClass('hidden');
     },
 
     getValues: function() {
@@ -91,6 +90,8 @@ var ProjectsView = Backbone.View.extend({
                 console.log(proj.toJSON());
                 $this.addOne(proj);
                 console.log('success');
+                $('#newProjectForm').addClass('hidden');
+                $('#createForm')[0].reset();
             },
             error: function(model, errors, options) {
                 console.log('errors');
@@ -98,16 +99,16 @@ var ProjectsView = Backbone.View.extend({
             }
         });
         if (proj.validationError) {
-            console.log(proj.validationError);
+            $this.hideErrors();
             $this.showErrors(proj.validationError);
         }
+
 
     },
 
     showErrors: function(errors) {
         _.each(errors, function(error) {
             var sel = '[name=' + error.name + ']';
-            console.log('selector: ' + sel)
             $(sel).parent().parent().addClass('has-error');
         });
     },

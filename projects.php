@@ -3,18 +3,25 @@
 	<head>
 		<title> Service Day | Projects </title>
         <meta charset="utf-8"></head>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/sticky-footer.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
         <style>
 	        body {
 	            margin-top: 20px;
+	            background-color: #CAEFFA;
 	        }
 	        navbar {
 	            margin-bottom: 20px;
 	        }
 	        #Banner {
 	        	margin-bottom: 20px;
+	        }
+	        #addProject {
+	        	margin-bottom: 5px;
+	        }
+	        #ProjectsContainer {
 	        }
         </style>
 	</head>	
@@ -64,73 +71,8 @@
 	</header>
 
 	<h3 class="text-center"> List of Projects <span class="glyphicon glyphicon-fire"></span></h3>
-	
-	<div class="container">
-
-			<div id="ProjectsContainer">
-
-			</div>
-		</div>
-	</div>
-	
-
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="myModalLabel">Add a New Project</h4>
-	      </div>
-	      <div class="modal-body">
-			<form role="form">
-				<div class="form-group">
-					<label for="exampleInputEmail1">Project Name</label>
-					<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">Description</label>
-					<textarea class="form-control" id="exampleInputPassword1" placeholder="Password"></textarea>
-				</div>
-
-
-
-				<div class="form-group">
-					<label for="exampleInputFile">Project Picture (optional)</label>
-					<input type="file" id="exampleInputFile">
-					<label for="status"> Status </label>
-					<select class="form-control">
-						<option>Open</option>
-						<option>Closed</option>
-						<option>Full</option>
-						<option>Cancelled</option>
-					</select>
-
-				</div>
-				<div class="form-group">
-					<label class="checkbox-inline">
-						<input type="checkbox" id="inlineCheckbox1" value="option1"> Large Group Friendly?
-					</label>
-					<label class="checkbox-inline">
-						<input type="checkbox" id="inlineCheckbox2" value="option2"> Is Drop In?
-					</label>
-				</div>
-				<div class="form-group">
-					Nerdy <input type="datetime-local" name="bdaytime">
-				</div>
-			</form>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save Project</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-
-	<div id="newProjectForm" class="container">
-		<form class="form-horizontal">
+	<div id="newProjectForm" class='hidden' class="container">
+		<form class="form-horizontal" id='createForm'>
 		<fieldset>
 
 		<!-- Text input-->
@@ -225,6 +167,71 @@
 		</fieldset>
 		</form>
 	</div>
+	<div class="container" >
+		
+			<div id="ProjectsContainer">
+				
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Add a New Project</h4>
+	      </div>
+	      <div class="modal-body">
+			<form role="form">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Project Name</label>
+					<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Description</label>
+					<textarea class="form-control" id="exampleInputPassword1" placeholder="Password"></textarea>
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="exampleInputFile">Project Picture (optional)</label>
+					<input type="file" id="exampleInputFile">
+					<label for="status"> Status </label>
+					<select class="form-control">
+						<option>Open</option>
+						<option>Closed</option>
+						<option>Full</option>
+						<option>Cancelled</option>
+					</select>
+
+				</div>
+				<div class="form-group">
+					<label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox1" value="option1"> Large Group Friendly?
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox2" value="option2"> Is Drop In?
+					</label>
+				</div>
+				<div class="form-group">
+					Nerdy <input type="datetime-local" name="bdaytime">
+				</div>
+			</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save Project</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	
 	
 
 

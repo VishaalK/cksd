@@ -2,7 +2,7 @@ var ProjectView = Backbone.View.extend({
 	//template: _.template($('#ProjectViewTemplate').html()),
 	//template: _.template('<b>  <%= name %> </b>: <p> <%= description %> </p>  Is drop in?: <%= (isDropIn) ? "Yes" : "No" %>'),
 	
-	className: 'row well',
+	className: 'row',
 	id: function() {
 		return this.model.get('id');
 	},
@@ -12,7 +12,7 @@ var ProjectView = Backbone.View.extend({
 								<p>Start Time: <%= startTime %> - End Time: <%= endTime %> </p> \
 						</div> \
 						<div class="col-md-1"> \
-							<span class="pull-right"><%= maxSignups %> </span> \
+							<% if (needsDriver) { %> <i class="fa fa-car fa-lg"></i> <% } %> \
 							<a id="#remove" class="remove"><span class="glyphicon glyphicon-remove"></span></a> \
 						</div><div class="col-md-1"></div>'),
 
@@ -64,11 +64,10 @@ var ProjectView = Backbone.View.extend({
 		$('#7c3d0558-90fc-d4f9-e9c5-72061f7436bf').fadeTo('fast', 0.01, function() { $(this).slideUp('fast', function() { $(this).remove(); }); });
 		*/
 		if (confirm('Are you sure you want to delete this project?')) {
-			this.$el.slideUp({
-				duration: 500,
-				complete: function() {
+			$this.$el.fadeTo('fast', 0.01, function() {
+				$this.$el.slideUp('fast', function() {
 					$this.model.destroy();
-				}
+				})
 			});
 		}
 	}
