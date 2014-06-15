@@ -3,6 +3,9 @@ var ProjectView = Backbone.View.extend({
 	//template: _.template('<b>  <%= name %> </b>: <p> <%= description %> </p>  Is drop in?: <%= (isDropIn) ? "Yes" : "No" %>'),
 	
 	className: 'row well',
+	id: function() {
+		return this.model.get('id');
+	},
 	template: _.template('<div class="col-md-1"> <a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/64x64"> </a></div><div class="col-md-9"> \
 								<b><%= name %></b> <span name="status" class="label"><%= status %></span> \
 								<p><%= description %></p> \
@@ -55,10 +58,18 @@ var ProjectView = Backbone.View.extend({
 
 	clear: function(e) {
 		//delete the Project from
-		e.preventDefault();
-		console.log('clear called');
+		var $this = this;
+		e.preventDefault()
+		/*
+		$('#7c3d0558-90fc-d4f9-e9c5-72061f7436bf').fadeTo('fast', 0.01, function() { $(this).slideUp('fast', function() { $(this).remove(); }); });
+		*/
 		if (confirm('Are you sure you want to delete this project?')) {
-			this.model.destroy();
+			this.$el.slideUp({
+				duration: 500,
+				complete: function() {
+					$this.model.destroy();
+				}
+			});
 		}
 	}
 

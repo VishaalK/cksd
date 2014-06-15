@@ -261,13 +261,13 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"> </script> <!-- backbone.js -->
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/utils/backbone.localStorage.js"></script>
+    <script type="text/javascript" src="js/utils/moment.min.js"></script>
+	<script type="text/javascript" src="js/utils/bootstrap-datetimepicker.min.js"></script>
     <script src="js/views/Navbar.js"></script>
 	<script src="js/models/Project.js"></script>
 	<script src="js/views/ProjectView.js"></script>
 	<script src="js/collections/Projects.js"></script>
 	<script src="js/views/ProjectsView.js"></script>
-	<script type="text/javascript" src="js/utils/moment.min.js"></script>
-	<script type="text/javascript" src="js/utils/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript">
             $(function () {
                 $('#startTime').datetimepicker({

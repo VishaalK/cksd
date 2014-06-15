@@ -1,5 +1,12 @@
 var ProjectsView = Backbone.View.extend({
-	template: _.template('<div id="#ProjectsList"> </div> <div style="padding-bottom: 2px" class="row"> \
+	template: _.template('<div id="#ProjectsList"> \
+        <div class="panel panel-default" style="width: 200px"> \
+          <div class="panel-heading">Panel heading without title</div> \
+          <div class="panel-body"> \
+            Panel content  \
+          </div> \
+        </div> \
+        </div> <div style="padding-bottom: 2px" class="row"> \
 		<p> <span class="pull-left"> List of Projects <span class="glyphicon glyphicon-fire"></span> </span> <span class="pull-right"> <button id="addProject" type=button class="btn btn-success">Add a Project <span class="glyphicon glyphicon-plus"></span></button></span> </p></div>'),
 	el: $('#ProjectsContainer'),
 
@@ -61,46 +68,53 @@ var ProjectsView = Backbone.View.extend({
             'bigGroupFriendly'  : $('input[name=bigGroupFriendly]').is(':checked'),
             'maxSignups'        : $('input[name=maxSignups]').val()
         };
-        values.maxSignups = parseInt(values.maxSignups, 10);
-        return values;
-    },
+        // Parse and transform the user inputted values, 
+        // We must prevent XSS by escaping relevant user input and then send it to the server
+        // We could probably unescape it when we put it back
+        // Model.validate() will take care of the rest    
+        values.name = _.escape(values.name);
+        values.description = _.escape(values.description);
+        values.siteLeader = _.escape(values.siteLeader);
+        var startTime = $('input[name=start')
 
-    /* Called to trigger default HTML5 data validation */
-    validateData: function() {
-        // Transforms the data 
-        if (!$('input[name=maxSignups]')[0].checkValidity()) {
-            alert('not valid');
-            return false;
-        }
-        return true;
-        //escape all data so when its reflected it cant do XSS
-        // escape name
-        // escape description
-        // status is an enum so thats fine
-        // siteLeader should be typeahead and escaped (checkedg)
-        // startime validated against moment js
-        // endtime validated against moment js
-        // not way to screw up the checkboxes
-        // maxSignups should be intval'd
+        values.maxSignups = parseInt(values.maxSignups, 10);
+        console.log(values.maxSignups);
+        return values;
     },
 
     addProject: function() {
         var $this = this;
         var proj = new Project(this.getValues());
-        /*if (!this.validateData()) {
-            console.log('did not pass form validation');
-        }*/
-        // two levels of validation, form validation and then model saving validatoin
         proj.save(null, {
             success: function(model, response, options) {
+                $this.hideErrors();
                 console.log(proj.toJSON());
                 $this.addOne(proj);
                 console.log('success');
             },
-            error: function(model, repsonse, options) {
-                console.log('ERRORR ERROR ALERRTT');
+            error: function(model, errors, options) {
+                console.log('errors');
                 alert('will twerk for food');
             }
+        });
+        if (proj.validationError) {
+            console.log(proj.validationError);
+            $this.showErrors(proj.validationError);
+        }
+
+    },
+
+    showErrors: function(errors) {
+        _.each(errors, function(error) {
+            var sel = '[name=' + error.name + ']';
+            console.log('selector: ' + sel)
+            $(sel).parent().parent().addClass('has-error');
+        });
+    },
+
+    hideErrors: function() {
+        $('.has-error').each(function(index, obj) {
+            $(this).removeClass('has-error');
         });
     }
 });
