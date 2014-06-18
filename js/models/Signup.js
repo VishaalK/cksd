@@ -9,6 +9,7 @@ var Signup = Backbone.Model.extend({
 	defaults: {
 		userID: undefined,
 		projectID: undefined,
+		signupTime:
 	},
 
 

@@ -71,7 +71,7 @@
 	</header>
 
 	<h3 class="text-center"> List of Projects <span class="glyphicon glyphicon-fire"></span></h3>
-	<div id="newProjectForm" class='hidden' class="container">
+	<div id="newProjectForm" class="container" style="display: none;">
 		<form class="form-horizontal" id='createForm'>
 		<fieldset>
 

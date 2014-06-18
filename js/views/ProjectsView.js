@@ -50,7 +50,13 @@ var ProjectsView = Backbone.View.extend({
     },
 
     renderForm: function() {
-    	$('#newProjectForm').toggleClass('hidden');
+        $('#newProjectForm').slideToggle();
+        // if (!$('#newProjectForm').hasClass('hidden')) {
+        //     console.log('slide up');
+        //     $('#newProjectForm').slideUp('slow');
+        // } else {
+        //     $('#newProjectForm').toggleClass('hidden');
+        // }
     },
 
     getValues: function() {
@@ -90,7 +96,7 @@ var ProjectsView = Backbone.View.extend({
                 console.log(proj.toJSON());
                 $this.addOne(proj);
                 console.log('success');
-                $('#newProjectForm').addClass('hidden');
+                $('#newProjectForm').slideUp('slow');
                 $('#createForm')[0].reset();
             },
             error: function(model, errors, options) {
