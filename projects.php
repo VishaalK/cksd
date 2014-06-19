@@ -263,11 +263,13 @@
 	&q=Space+Needle,Seattle+WA">
 	</iframe> -->
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- jQuery -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"> </script> <!-- underscore.js -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"> </script> <!-- backbone.js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/utils/backbone.localStorage.js"></script>
+	<!-- jQuery -->
+	<script src="js/lib/jquery/jquery-1.10.2.js"></script>
+	<script src="js/lib/jquery/jquery-ui-1.10.4.min.js"></script>
+	<script type="text/javascript" src="js/lib/underscore/underscore.min.js"></script>
+	<script src="js/lib/backbone/backbone.min.js"></script>
+	<script src="js/lib/bootstrap/bootstrap.min.js"></script>
+	<script src="js/utils/backbone.localStorage.js"></script>
     <script type="text/javascript" src="js/utils/moment.min.js"></script>
 	<script type="text/javascript" src="js/utils/bootstrap-datetimepicker.min.js"></script>
     <script src="js/views/Navbar.js"></script>
@@ -276,26 +278,26 @@
 	<script src="js/collections/Projects.js"></script>
 	<script src="js/views/ProjectsView.js"></script>
 	<script type="text/javascript">
-            $(function () {
-                $('#startTime').datetimepicker({
-                	defaultDate: "11/17/2014 10:00 AM",
-                	minDate: "11/17/2014",
-                	maxDate: "11/18/2014 10:00 PM",
-                	sideBySide: true,
-                	useStrict: true
-                });
+        $(function () {
+            $('#startTime').datetimepicker({
+            	defaultDate: "11/17/2014 10:00 AM",
+            	minDate: "11/17/2014",
+            	maxDate: "11/18/2014 10:00 PM",
+            	sideBySide: true,
+            	useStrict: true
             });
+        });
 
-            $(function () {
-                $('#endTime').datetimepicker({
-                	defaultDate: "11/17/2014 05:00 PM",
-                	minDate: "11/17/2014",
-                	maxDate: "11/18/2014 10:00 PM",
-                	sideBySide: true,
-                	useStrict: true
-                });
+        $(function () {
+            $('#endTime').datetimepicker({
+            	defaultDate: "11/17/2014 05:00 PM",
+            	minDate: "11/17/2014",
+            	maxDate: "11/18/2014 10:00 PM",
+            	sideBySide: true,
+            	useStrict: true
             });
-        </script>
+        });
+    </script>
 	<!-- <script src="js/views/AddProjectView.js"></script> -->
 	</body>
 
