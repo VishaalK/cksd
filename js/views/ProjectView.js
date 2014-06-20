@@ -2,7 +2,7 @@ var ProjectView = Backbone.View.extend({
 	//template: _.template($('#ProjectViewTemplate').html()),
 	//template: _.template('<b>  <%= name %> </b>: <p> <%= description %> </p>  Is drop in?: <%= (isDropIn) ? "Yes" : "No" %>'),
 	
-	className: 'row',
+	className: 'row well',
 	id: function() {
 		return this.model.get('id');
 	},

@@ -3,6 +3,7 @@
 	<head>
 		<title> Service Day | Projects </title>
         <meta charset="utf-8"></head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/sticky-footer.css" rel="stylesheet">
@@ -71,7 +72,7 @@
 	</header>
 
 	<h3 class="text-center"> List of Projects <span class="glyphicon glyphicon-fire"></span></h3>
-	<div id="newProjectForm" class="container" style="display: none;">
+	<div id="newProjectForm" class="container-fluid" style="display: none;">
 		<form class="form-horizontal" id='createForm'>
 		<fieldset>
 

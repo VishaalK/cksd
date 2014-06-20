@@ -1,21 +1,13 @@
-// Filename: main.js
-
-// Require.js allows us to configure shortcut alias
-// There usage will become more apparent further along in the tutorial.
 require.config({
-  paths: {
-    jquery: 'libs/jquery/jquery',
-    underscore: 'libs/underscore/underscore',
-    backbone: 'libs/backbone/backbone'
-  }
-
+	paths: {
+		jquery: 'lib/jquery/jquery-1.10.2',
+		'jquery-ui': 'lib/jquery/jquery-ui-1.10.4.min',
+		underscore: 'lib/underscore/underscore.min',
+		backbone: 'lib/backbone/backbone.min',
+		'backbone.localStorage': 'lib/backbone/backbone.localStorage'
+	}
 });
 
-require([
+require(['jquery', 'jquery-ui', 'underscore', 'backbone', 'backbone.localStorage'], function() {
 
-  // Load our app module and pass it to our definition function
-  'app',
-], function(App){
-  // The "app" dependency is passed in as "App"
-  App.initialize();
 });
