@@ -4,10 +4,12 @@ require.config({
 		'jquery-ui': 'lib/jquery/jquery-ui-1.10.4.min',
 		underscore: 'lib/underscore/underscore.min',
 		backbone: 'lib/backbone/backbone.min',
-		'backbone.localStorage': 'lib/backbone/backbone.localStorage'
+		'backbone.localStorage': 'lib/backbone/backbone.localStorage',
+		bootstrap: 'lib/bootstrap/bootstrap.min',
+		text: 'lib/plugins/text'
 	}
 });
 
-require(['jquery', 'jquery-ui', 'underscore', 'backbone', 'backbone.localStorage'], function() {
+require(['jquery', 'jquery-ui', 'underscore', 'backbone', 'backbone.localStorage', 'bootstrap', 'text'], function() {
 
 });

@@ -1,6 +1,13 @@
 var SignupView = Backbone.View.extend({
-	tagName: 'tr',
-	template: '<td> <%= firstName %> </td> <td> <%= %> </td> <td> <%= %> </td>'
+	// tagName: 'tr',
+	// template: '<td> <%= firstName %> </td> <td> <%= %> </td> <td> <%= %> </td>'
+    render: function() {
+      // Using Underscore we can compile our template with data
+      var data = {};
+      var compiledTemplate = _.template( projectListTemplate, data );
+      // Append our compiled template to this Views "el"
+      this.$el.append( compiledTemplate );
+	}
 });
 
 // <table class="table table-striped">
