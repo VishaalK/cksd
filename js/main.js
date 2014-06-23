@@ -1,3 +1,11 @@
+/*
+ * Entry point *.js file for /projects.php -> eventually use our own router for pretty URLs
+ * @author vishaalk
+ */
+// Filename: main.js
+
+// Require.js allows us to configure shortcut alias
+// There usage will become more apparent further along in the tutorial.
 require.config({
 	paths: {
 		jquery: 'lib/jquery/jquery-1.10.2',
@@ -6,10 +14,10 @@ require.config({
 		backbone: 'lib/backbone/backbone.min',
 		'backbone.localStorage': 'lib/backbone/backbone.localStorage',
 		bootstrap: 'lib/bootstrap/bootstrap.min',
-		text: 'lib/plugins/text'
+		text: 'lib/plugins/text',
 	}
 });
 
-require(['jquery', 'jquery-ui', 'underscore', 'backbone', 'backbone.localStorage', 'bootstrap', 'text'], function() {
-
+require(['projects',], function(projectsPage){
+	projectsPage.initialize();
 });
