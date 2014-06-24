@@ -1,0 +1,96 @@
+<div  class="container-fluid" style="display: none;">
+<form id="newProjectForm"class="form-horizontal" id='createForm'>
+	<fieldset>
+
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="name">Project Name</label>  
+	  <div class="col-md-5">
+	  	<input id="name" name="name" placeholder="" class="form-control input-md" required="" type="text">
+	  </div>
+
+	</div>
+
+	<div class="form-group">
+  		<label class="col-md-4 control-label" for="name">Site Leader</label> 
+ 	 	<div class="col-md-5">
+	  		<input id="siteLeader" name="siteLeader" placeholder="austinas" class="form-control input-md" required type="text">
+	  	</div>
+	</div>
+	<!-- Textarea -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="description">Project Description</label>
+	  <div class="col-md-4">                     
+	    <textarea class="form-control" id="description" name="description" required=""></textarea>
+	  </div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-md-4 control-label" for="startTime"> Start &amp; End Time</label>			
+    	<div class='col-md-3'>
+        	<input type='text' class="form-control" name="startTime" id="startTime"/>
+    	</div>
+    	<div class='col-md-3'>
+    		<input type='text' class='form-control' name="endTime" id="endTime" />
+    	</div>
+	</div>
+
+
+	<!-- Multiple Checkboxes (inline) -->
+	<div class="form-group">
+	  	<label class="col-md-4 control-label" for="checkboxes"></label>
+	  	<div class="col-md-6">
+		    <label class="checkbox-inline">
+				<input type="checkbox" name="needsDriver" id="needsDriver" value="needsDriver"> <strong> Needs Driver? </strong>
+			</label>
+		    <label class="checkbox-inline">
+				<input type="checkbox" id="dropIn" name="dropIn" value="dropIn"> Drop In?
+			</label>
+			<label class="checkbox-inline">
+				<input type="checkbox" name="bigGroupFriendly" id="bigGroupFriendly" value="bigGroupFriendly"> Large Group Friendly?
+			</label>
+	 	</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-md-4 control-label" for="maxSignups">Max Signups</label>
+		<!-- <div class="col-md-1">
+			<input type="number" name="maxSignups">
+		</div> -->
+		<div class="col-md-1"> 
+			<input type='number' class='form-control' name='maxSignups' id='maxSignups' min="0" step="1" pattern="\d+"//>
+		</div>
+	</div>
+
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="status">Project Status</label>
+	  <div class="col-md-4">
+	    <select id="status" name="status" class="form-control">
+	      <option value="open">Open</option>
+	      <option value="closed">Closed</option>
+	      <option value="full">Full</option>
+	      <option value="cancelled">Cancelled</option>
+	    </select>
+	  </div>
+	</div>
+
+	<!-- File Button --> 
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="picture">Picture</label>
+	  <div class="col-md-4">
+	    <input id="picture" name="picture" class="input-file" type="file">
+	  </div>
+	</div>
+
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="submit"></label>
+	  <div class="col-md-4">
+	    <button id="submit" name="submit" type="button" class="btn btn-success">Submit</button>
+	  </div>
+	</div>
+
+	</fieldset>
+</form>
+</div>
