@@ -1,12 +1,24 @@
+<div class="col-md-1">
+</div>
 <div class="col-md-1"> 
 	<a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/64x64"> </a>
+<!-- 	<div class="panel panel-primary" style="width: 108px"> 
+		<div class="panel-heading"> Spots Open </div> 
+		<div class="panel-body text-center"> 
+			22  
+		</div> 
+	</div>  -->
 </div>
-<div class="col-md-9"> 
-	<b><%= name %></b> <span name="status" class="label"><%= status %></span> 
+
+<div class="col-md-8"> 
+	<p><%= name %> <span name="status" class="label"><%= status %></span> </p>
 	<p><%= description %></p> 
 	<p>Start Time: <%= startTime %> - End Time: <%= endTime %> </p> 
 </div> 
+
 <div class="col-md-1"> 
 	<% if (needsDriver) { %> <i class="fa fa-car fa-lg"></i> <% } %> 
 	<a id="#remove" class="remove"><span class="glyphicon glyphicon-remove"></span></a> 
-</div><div class="col-md-1"></div>
+</div>
+<div class="col-md-1">
+</div>

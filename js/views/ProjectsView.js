@@ -17,10 +17,11 @@ var ProjectsView = Backbone.View.extend({
 		this.collection = new Projects();
 		this.collection.fetch({
 			success: function(model, response, options) {
-				//console.log(model.toJSON());
-				$this.render();
+			    console.log(model);
+            	$this.render();
 			}
 		});
+
 		$('#submit').on('click', function(e) {
             e.preventDefault();
 			$this.addProject();
@@ -32,7 +33,8 @@ var ProjectsView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(this.template());
+        var data = { numProjects: this.collection.length };
+		this.$el.html(this.template(data));
 		for (var i = 0; i < this.collection.length; i++) {
 			var projView = new ProjectView({ model: this.collection.models[i] });
 			projView.render();
@@ -53,12 +55,6 @@ var ProjectsView = Backbone.View.extend({
 
     renderForm: function() {
         $('#newProjectForm').slideToggle();
-        // if (!$('#newProjectForm').hasClass('hidden')) {
-        //     console.log('slide up');
-        //     $('#newProjectForm').slideUp('slow');
-        // } else {
-        //     $('#newProjectForm').toggleClass('hidden');
-        // }
     },
 
     getValues: function() {

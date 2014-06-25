@@ -1,5 +1,5 @@
-define(['underscore','backbone', 'backbone.localStorage'],   
-function (_, Backbone) {
+define(['underscore','backbone', 'moment', 'backbone.localStorage'],   
+function (_, Backbone, Moment) {
     var ProjectModel = Backbone.Model.extend({
         url: '_api/project/',
         
@@ -33,26 +33,26 @@ function (_, Backbone) {
             var errors = [];
 
             if (attrs.name === '') {
-                errors.push({ name: 'name', errorMessage: 'Project name cannot be empty'})
+                errors.push({ name: 'name', message: 'Project name cannot be empty'})
             } 
 
             if (attrs.description === '') {
-                errors.push({ name: 'description', errorMessage: 'Gotta have a project description bro' });
+                errors.push({ name: 'description', message: 'Gotta have a project description bro' });
             }
             //always a number since we parsed the int
             if ((typeof attrs.maxSignups) !== 'number' || isNaN(attrs.maxSignups)) {
-                errors.push({ name: 'maxSignups', errorMessage: "I don't know how to say this, but max signups has to be a number..."});
+                errors.push({ name: 'maxSignups', message: "I don't know how to say this, but max signups has to be a number..."});
             } 
             var startTime = moment(attrs.startTime, 'MM/DD/YYYY hh:mm:ss a');
             if (!startTime.isValid()) {
-                errors.push({ name: 'startTime', errorMessage: 'Start time was formatted incorrectly. Please use MM/DD/YYYY hh:mm AM/PM' });
+                errors.push({ name: 'startTime', message: 'Start time was formatted incorrectly. Please use MM/DD/YYYY hh:mm AM/PM' });
             } else {
                 attrs.startTime = startTime.format(mysqlDateTimeFormat);
             }
 
             var endTime = moment(attrs.endTime, 'MM/DD/YYYY hh:mm:ss a');
             if (!endTime.isValid()) {
-                errors.push({ name: 'endTime', errorMessage: 'End time was formatted incorrectly. Please use MM/DD/YYYY hh:mm AM/PM' });
+                errors.push({ name: 'endTime', message: 'End time was formatted incorrectly. Please use MM/DD/YYYY hh:mm AM/PM' });
             } else {
                 attrs.endTime = endTime.format(mysqlDateTimeFormat);
             }

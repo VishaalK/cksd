@@ -15,6 +15,7 @@ require.config({
 		'backbone.localStorage': 'lib/backbone/backbone.localStorage',
 		bootstrap: 'lib/bootstrap/bootstrap.min',
 		text: 'lib/plugins/text',
+		moment: 'utils/moment.min'
 	}
 });
 
