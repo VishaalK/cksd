@@ -60,9 +60,7 @@ var ProjectView = Backbone.View.extend({
 		//delete the Project from
 		var $this = this;
 		e.preventDefault()
-		/*
-		$('#7c3d0558-90fc-d4f9-e9c5-72061f7436bf').fadeTo('fast', 0.01, function() { $(this).slideUp('fast', function() { $(this).remove(); }); });
-		*/
+		this.trigger('delete'); //
 		if (confirm('Are you sure you want to delete this project?')) {
 			$this.$el.fadeTo('fast', 0.01, function() {
 				$this.$el.slideUp('fast', function() {

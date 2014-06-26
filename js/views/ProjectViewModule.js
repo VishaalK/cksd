@@ -57,6 +57,7 @@ function($, _, Backbone, projectViewTemplate) {
 				$this.$el.fadeTo('fast', 0.01, function() {
 					$this.$el.slideUp('fast', function() {
 						$this.model.destroy();
+						$this.trigger('delete');
 					})
 				});
 			}

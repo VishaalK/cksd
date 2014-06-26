@@ -7,15 +7,8 @@ function($, _, Backbone, Project, ProjectView, Projects, projectsViewTemplate) {
             var $this = this;
             this.collection = options.collection;
             $this.render();
-            /*this.collection.fetch({
-                success: function(model, response, options) {
-                    $this.render();
-                }
-            });*/
-            /*$('#submit').on('click', function(e) {
-                e.preventDefault();
-                $this.addProject();
-            });*/
+
+            this.listenTo(this.collection, 'add', this.addOne);
         },
 
         events: {
@@ -31,18 +24,21 @@ function($, _, Backbone, Project, ProjectView, Projects, projectsViewTemplate) {
             $.each(this.collection.models, function(index, model) {
                 $this.addOne(model);
             });
-            /*for (var i = 0; i < this.collection.length; i++) {
-                var projView = new ProjectView({ model: this.collection.models[i] });
-                projView.render();
-                this.$el.find('#ProjectsList').append(projView.el);
-            }*/
         },
 
         addOne: function(proj) {
-            console.log('addOne called');
+            this.adjustCount(1);
             var view = new ProjectView({model: proj});
             view.render();
             this.$el.find('#ProjectsList').append(view.el);
+            this.listenTo(view, 'delete', function() {
+                this.adjustCount(-1);
+            });
+        },
+
+        adjustCount: function(num) {
+            var orig = this.$el.find('#numProjects').html();
+            this.$el.find('#numProjects').html(parseInt(orig, 10) + num);
         },
 
         renderProjectAddModal: function() {

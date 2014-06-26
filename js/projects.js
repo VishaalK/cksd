@@ -8,7 +8,6 @@ define([ //Use the shims to make sure they load in the correct order
 		// Initialize all views on the page and let them do their thing
 		var navbar = new nav({ el: $('#NavbarContainer')});
 		var projects = new Projects();
-		console.log(projects.addOne);
 		projects.fetch({
 			success: function() {
 				var projectsView = new projectsViewModule({ el: $('#ProjectsContainer'), collection: projects });

@@ -15,7 +15,6 @@ function($, _, Backbone, projectViewTemplate, Project, Projects) {
 
 		initialize: function(options) {
 			this.collection = options.collection;
-			console.log(options.collection.addOne);
 			this.render();
 		},
 
@@ -54,13 +53,13 @@ function($, _, Backbone, projectViewTemplate, Project, Projects) {
         	console.log('addProject called');
             var $this = this;
             var proj = new Project(this.getValues());
-            console.log($this.collection.addOne);
+            //console.log($this.collection.addOne);
             proj.save(null, {
                 success: function(model, response, options) {
                     $this.hideErrors();
-                    $this.collection.addOne(proj); //has to be triggered on the parentView
+                    $this.collection.add(proj); //has to be triggered on the parentView 
                     $this.toggleView();
-                    $('#createForm')[0].reset();
+                    $this.$el.find('#newProjectForm')[0].reset();
                 },
                 error: function(model, errors, options) {
                     console.log('errors');
