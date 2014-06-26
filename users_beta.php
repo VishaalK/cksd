@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title> Projects Beta </title>
-        <meta charset="utf-8"></head>
+		<title> Users Beta </title>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,21 +28,18 @@
         </style>
 	</head>	
 	<body>
+
 	<header class="container" id="NavbarContainer">
 	</header>
 
-	<!-- <h3 class="text-center"> List of Projects <span class="glyphicon glyphicon-fire"></span></h3> -->
-	<div class="container" id="NewProjectViewContainer">
-
+	<div class="container">
 	</div>
+
 	<div class="container" >
-			<div id="ProjectsContainer">
-			</div>
-		</div>
 	</div>
 
     <footer> </footer>
-	<script type="text/javascript" data-main="js/projectsMain.js" src="js/lib/require/require.js"></script>
+	<script type="text/javascript" data-main="js/usersMain.js" src="js/lib/require/require.js"></script>
 	</body>
 
 </html>	
