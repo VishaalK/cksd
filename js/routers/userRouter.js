@@ -6,7 +6,7 @@ function($, _, Backbone) {
 		},
 
 		routes: {
-			"users(/):id" : 'userById',
+			"users/:id" : 'userById',
 		},
 			
 

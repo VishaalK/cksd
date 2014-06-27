@@ -32,7 +32,7 @@
 	<header class="container" id="NavbarContainer">
 	</header>
 
-	<div class="container">
+	<div class="container" id="UsersContainer">
 	</div>
 
 	<div class="container" >
