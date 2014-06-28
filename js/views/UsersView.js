@@ -4,7 +4,6 @@ function($, _, Backbone, User, Users, UserView, UsersTemplate) {
 		template: _.template(UsersTemplate),
 
 		initialize: function() {
-			console.log('UsersViews plural initialized');
 			this.render();
 		},
 

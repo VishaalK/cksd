@@ -1,9 +1,24 @@
 define(['jquery', 'underscore', 'backbone', 'models/User', 'text!templates/_UserView.html'],
-function($, _, Backbone, User) {
+function($, _, Backbone, User, UserTemplate) {
 	var UserView = Backbone.View.extend({
-		tagName: 'tr'
+		tagName: 'tr',
+		template: _.template(UserTemplate),
+
+
+		initialize: function() {
+			this.listenTo(this.model, 'destroy', this.clear);
+		},
+
+		render: function() {
+			this.$el.html(this.template(this.model.attributes));
+		},
+
+		clear: function() {
+			this.remove();
+		}
 	});
 
+	return UserView;
 });
 
 // <table class="table table-striped">

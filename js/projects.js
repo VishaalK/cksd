@@ -1,9 +1,9 @@
 define([ //Use the shims to make sure they load in the correct order
 	'jquery','underscore','backbone','views/nav', 'views/ProjectsViewModule', 
-	'collections/ProjectsModule', 'views/NewProjectViewModule', 'views/FooterModule','bootstrap'
+	'collections/ProjectsModule', 'views/NewProjectViewModule', 'views/FooterModule', 'views/UserView'
+	'bootstrap'
 	], 
-	function($, _, Backbone, nav, projectsViewModule, Projects, NewProjectView, Footer) {
-	
+function($, _, Backbone, nav, projectsViewModule, Projects, NewProjectView, Footer, UserView) {
 	var initialize = function() {
 		// Initialize all views on the page and let them do their thing
 		var navbar = new nav({ el: $('#NavbarContainer')});
