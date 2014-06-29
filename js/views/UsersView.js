@@ -9,8 +9,16 @@ function($, _, Backbone, User, Users, UserView, UsersTemplate) {
 
 		render: function() {
 			var data = {};
-			this.$el.html(this.template(data));
-		}
+            // $.each(this.collection, function(i, obj) { renderUser(obj)} ); 
+            //render that shit
+            this.$el.html(this.template(data));
+		},
+
+        renderUser: function(user) {
+            var userView = new UserView({ model: user });
+            userView.render();
+            this.$el.find('#UsersList').append(userView.el);
+        }
 	});
 
 	return UsersView;
