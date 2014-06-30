@@ -1,6 +1,6 @@
 define([ //Use the shims to make sure they load in the correct order
 	'jquery','underscore','backbone','views/nav', 'views/ProjectsViewModule', 
-	'collections/ProjectsModule', 'views/NewProjectViewModule', 'views/FooterModule', 'views/UserView'
+	'collections/ProjectsModule', 'views/NewProjectViewModule', 'views/FooterModule',
 	'bootstrap'
 	], 
 function($, _, Backbone, nav, projectsViewModule, Projects, NewProjectView, Footer, UserView) {
