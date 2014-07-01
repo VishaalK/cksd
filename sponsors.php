@@ -21,9 +21,12 @@
 	        	margin-bottom: 20px;
 	        }
 	        #addProject {
-	        	margin-bottom: 5px;
+	        	margin-bottom: 10px;
 	        }
 	        #ProjectsContainer {
+	        }
+	        img {
+	        	vertical-align: middle;
 	        }
         </style>
 	</head>	
@@ -33,18 +36,64 @@
 
 	<!-- <h3 class="text-center"> List of Projects <span class="glyphicon glyphicon-fire"></span></h3> -->
 	<div class="container" id="NewProjectViewContainer">
-
 	</div>
-	<div class="container-fluid">
+	<!-- <div class="container-fluid center-block">
 		<div class="row">
-			<div class="col-md-4"> <img src="http://placehold.it/150x150" class="img-rounded center-block"></div>
-			<div class="col-md-4"> <img src="http://placehold.it/150x150" class="img-rounded center-block"></div>
-			<div class="col-md-4"> <img src="http://placehold.it/150x150" class="img-rounded center-block"></div>
+			<div class="col-md-4"> <img src="img/afternoondelight.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/bd's.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/bp.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"> <img src="img/bww.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/espresso.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/founders.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"> <img src="img/gb.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/ginsberg.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/kennedy.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"> <img src="img/lsasg.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/noodles.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/panera.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"> <img src="img/potbellys.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/tower_inn.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/brueggers.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+	</div> -->
+	<div class="container">
+		<div class="row" style="padding-bottom: 50px; padding-top: 50px;">
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+		<div class="row" style="padding-bottom: 50px;">
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+		<div class="row" style="padding-bottom: 50px;">
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+		<div class="row" style="padding-bottom: 50px;">
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+		</div>
+		<div class="row" style="padding-bottom: 50px;">
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
+			<div class="col-md-4"> <img src="img/sponsors/placeholder.png" class="img-responsive img-rounded center-block"> </div>
 		</div>
 	</div>
 
     <footer> </footer>
-	<script type="text/javascript" data-main="js/projectsMain.js" src="js/lib/require/require.js"></script>
+	<script type="text/javascript" data-main="js/sponsorsMain.js" src="js/lib/require/require.js"></script>
 	</body>
 
 </html>	

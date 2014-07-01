@@ -1,8 +1,8 @@
 define([ //Use the shims to make sure they load in the correct order
-	'jquery','underscore','backbone',
+	'jquery','underscore','backbone', 'views/nav', 'views/FooterModule',
 	'bootstrap'
 	], 
-function($, _, Backbone) {
+function($, _, Backbone, nav, Footer) {
 	var initialize = function() {
 		// Initialize all views on the page and let them do their thing
 		var navbar = new nav({ el: $('#NavbarContainer')});
