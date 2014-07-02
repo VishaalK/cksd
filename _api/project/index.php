@@ -1,10 +1,13 @@
 <?php
-//header('Content-Type: application/json');
+header('Content-Type: application/json');
 require '../../lib/db_connect.php';
-$request = $_SERVER['REQUEST_METHOD'];
-echo $request . "\n";
+echo json_encode(array("nerds" => "Vishaal", "diva" => "Robin"));
 
-echo json_encode(json_decode(file_get_contents('php://input'), true));
+require 'Slim/Slim.php';
+\Slim\Slim::registerAutoloader();
+//echo $request . "\n";
+
+//echo json_encode(json_decode(file_get_contents('php://input'), true)) . "\n";
 
 if ($request === 'GET') {
 	if (!array_key_exists('id', $_REQUEST)) {
@@ -19,4 +22,7 @@ if ($request === 'GET') {
 	//echo json_encode($response);
 }
 
+?>
+
+<?php
 ?>
