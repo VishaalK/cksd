@@ -8,12 +8,32 @@ $app = new \Slim\Slim();
 $app->get('/', function () {
     // return all da projects
     global $mysqli;
-    $query = "SELECT name, description FROM `CKSD2014_projects`";
-    if ($result = $mysqli->query($query)) {
-    	$rows = $result->fetch_assoc();
-    	echo json_encode($rows);
+    $query = "SELECT name, description FROM CKSD2014_projects";
+	$prepared_statement = $mysqli->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+    $prepared_statement->execute();
+    while ($row = $prepared_statement->fetchObject()) {
+    	echo json_encode($row);
     }
+     
 });
+
+$app->get('/hello', function() {
+	echo json_encode(array("snitches" => "stitches"));
+});
+
+$app->get('/:id', function ($id) {
+	global $mysqli;
+    $id = intval($id);
+	$query = "SELECT * FROM CKSD2014_projects WHERE id = :id";
+	$prepared_statement = $mysqli->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+	$response = $prepared_statement->execute(array(':id' => $id));
+	echo json_encode($response->fetchObject());
+});
+
+$app->get('/hello/:name', function ($name) {
+    echo "Hello, $name";
+});
+
 $app->run();
 
 //echo json_encode(json_decode(file_get_contents('php://input'), true)) . "\n";
