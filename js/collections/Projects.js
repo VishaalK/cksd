@@ -1,5 +1,6 @@
 var Projects = Backbone.Collection.extend({
 	model: Project,
+	url: '_api/projects/',
 
 	localStorage: new Backbone.LocalStorage("projects-backbone")
 })

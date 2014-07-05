@@ -1,5 +1,5 @@
 var Project = Backbone.Model.extend({
-    url: '_api/project/',
+    url: '_api/project/index.php/',
     
     localStorage: new Backbone.LocalStorage("projects-backbone"),
 

@@ -8,47 +8,42 @@ $app = new \Slim\Slim();
 $app->get('/', function () {
     // return all da projects
     global $mysqli;
-    $query = "SELECT name, description FROM CKSD2014_projects";
+    $query = "SELECT * FROM CKSD2014_projects";
 	$prepared_statement = $mysqli->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $prepared_statement->execute();
-    while ($row = $prepared_statement->fetchObject()) {
-    	echo json_encode($row);
-    }
-     
+    echo json_encode($prepared_statement->fetchAll(PDO::FETCH_OBJ), JSON_PRETTY_PRINT);
 });
 
-$app->get('/hello', function() {
-	echo json_encode(array("snitches" => "stitches"));
-});
-
-$app->get('/:id', function ($id) {
+$app->get('/:id', function ($id) use ($app) {
 	global $mysqli;
     $id = intval($id);
 	$query = "SELECT * FROM CKSD2014_projects WHERE id = :id";
 	$prepared_statement = $mysqli->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-	$response = $prepared_statement->execute(array(':id' => $id));
-	echo json_encode($response->fetchObject());
+	$prepared_statement->execute(array(':id' => $id));
+	echo "<pre>";
+	echo json_encode($prepared_statement->fetchObject(), JSON_PRETTY_PRINT);
+	echo "</pre>";
 });
 
-$app->get('/hello/:name', function ($name) {
-    echo "Hello, $name";
+$app->post('/', function() use ($app) {
+	$data = $app->request->params();
+	$query = "INSERT INTO CKSD2014_projects 
+				(name, description, siteLeader, startDate, endDate, status, isDropIn, bigGroupFriendly, needsDriver, maxSignups)
+				VALUES (:name, :description, :siteLeader, :startDate, :endDate, :status, :isDropIn, :bigGroupFriendly, :needsDriver, :maxSignups);";
+	$stmt = $mysqli->prepare($query);
+	$query->execute();
+
+});
+
+$app->put('/:id', function($id) use ($app) {
+	$data = $app->request->params();
+});
+
+$app->delete('/:id', function($id) use ($app) {
+	$id = intval($id);
 });
 
 $app->run();
 
-//echo json_encode(json_decode(file_get_contents('php://input'), true)) . "\n";
-
-/*if ($request === 'GET') {
-	if (!array_key_exists('id', $_REQUEST)) {
-		//echo json_encode(array());
-		die;
-	}
-	$id = intval($_REQUEST['id']);
-	$query = 'SELECT name, description from CKSD2014_projects WHERE id = :id';
-	$prepared_statement = $mysqli->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-	$prepared_statement->execute(array(':id' => $id));
-	$response = $prepared_statement->fetchObject();
-	//echo json_encode($response);
-}*/
 
 ?>
