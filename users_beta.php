@@ -8,6 +8,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/sticky-footer.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+        <link rel="stylesheet" href="css/typeahead.css" />
         <style>
 	        body {
 	            margin-top: 20px;

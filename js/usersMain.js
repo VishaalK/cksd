@@ -14,8 +14,17 @@ require.config({
 		backbone: 'lib/backbone/backbone.min',
 		'backbone.localStorage': 'lib/backbone/backbone.localStorage',
 		bootstrap: 'lib/bootstrap/bootstrap.min',
+		typeahead: 'lib/bootstrap/typeahead',
 		text: 'lib/plugins/text',
-		moment: 'utils/moment.min'
+		moment: 'utils/moment.min',
+		'typeahead.twitter': 'lib/jquery/typeahead.jquery',
+		'bloodhound': 'lib/jquery/bloodhound'
+	},
+	shim: {
+		"bloodhound": {
+	        deps: ["jquery"],
+	        exports: "Bloodhound"
+	    }
 	}
 });
 

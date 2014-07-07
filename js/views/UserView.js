@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'models/User', 'text!templates/_UserView.html'],
+define(['jquery', 'underscore', 'backbone', 'models/UserModule', 'text!templates/_UserView.html'],
 function($, _, Backbone, User, UserTemplate) {
 	var UserView = Backbone.View.extend({
 		tagName: 'tr',

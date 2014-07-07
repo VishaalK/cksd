@@ -5,14 +5,15 @@ function($, _, Backbone, nav, UserRouter, Footer, UsersView, Users) {
 		var router = new UserRouter();
 		var footer = new Footer({ el: $('footer') });
         var users = new Users();
-        users.fetch({
+        var usersView = new UsersView({ el: $('#UsersContainer')  });
+        /*users.fetch({
             success: function() {
                 var usersView = new UsersView({ el: $('#UsersContainer'), collection: users });
             },
             error: function() {
                 alert('error');
             }   
-        });
+        });*/
 		//var usersView = new UsersView({ el: $('#UsersContainer') });
 	};
 
