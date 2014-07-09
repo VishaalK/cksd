@@ -11,7 +11,7 @@ $app->get('/', function () {
     $query = "SELECT * FROM CKSD2014_projects";
 	$prepared_statement = $mysqli->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $prepared_statement->execute();
-    echo json_encode($prepared_statement->fetchAll(PDO::FETCH_OBJ), JSON_PRETTY_PRINT);
+    echo json_encode($prepared_statement->fetchAll(PDO::FETCH_OBJECT), JSON_PRETTY_PRINT);
 });
 
 $app->get('/:id', function ($id) use ($app) {
