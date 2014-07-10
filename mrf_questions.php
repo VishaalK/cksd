@@ -13,7 +13,7 @@
 			cursor: pointer;
 		}
 		.col-md-2.active {
-			background-color: #BDECB6;
+			background-color: #CCFFCC;
 		}
 		.col-md-2.inactive {
 			background-color: white;
@@ -21,8 +21,12 @@
 		td {
 			background-color: rgba(86,61,124,.15)
 		}
+		td.active {				
+			background-color: #CCFFCC !important;
+		}
 		.table-bordered {
 			border: 1px solid rgba(86,61,124,.2);
+			font-size: 14px;
 		}
 		</style>
 	</head>
@@ -32,13 +36,22 @@
 			<h3> Monthly Report Form Question Editor </h3>
 			<p> #1: Jurgen Yurgen  <span style="color: green;" class="glyphicon glyphicon-ok"></span> </p>
 		</div> 
-		<div id="QuestionContainer"> </div>
+	</div>
+	<div class="container-fluid" id="QuestionContainer"> 
+
 	</div>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- jQuery -->
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"> </script> <!-- underscore.js -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"> </script> <!-- backbone.js -->
+	<div class="container-fluid">
+	<table class="table table-bordered" id="UsersList">
+	    <tbody> <td> Vishaal </td> <td> Dangert </td> </tbody>
+	</table>
+	</div>
+
+
+	<script src="js/lib/jquery/jquery-1.10.2.js"></script> <!-- jQuery -->
+	<script src="js/lib/jquery/jquery-ui-1.10.4.min.js"></script> <!-- jQuery -->
+    <script src="js/lib/underscore/underscore.js"> </script> <!-- underscore.js -->
+    <script src="js/lib/backbone/backbone.min.js"> </script> <!-- backbone.js -->
     <script src="js/lib/bootstrap/bootstrap.min.js"></script>
     <script src="js/models/MRFQuestion.js"></script>
     <script src="js/views/MRFQuestions.js"></script>
