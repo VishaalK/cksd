@@ -24,6 +24,12 @@ $app->get('/:id(/)', function($id) use ($app) {
 	echo json_encode($results->fetchObject()); 
 });
 
+$app->delete('/:id(/)', function($id) use ($app) {
+	global $mysqli;
+	$id = intval($id);
+	$query = "delete from mrf_questions where id=" . $id;
+	$results = $mysqli->query($query);
+});
 /*
 Get all the committees for which this question is active
 */

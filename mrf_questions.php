@@ -38,13 +38,9 @@
 		</div> 
 	</div>
 	<div class="container-fluid" id="QuestionContainer"> 
-
 	</div>
-
-	<div class="container-fluid">
-	<table class="table table-bordered" id="UsersList">
-	    <tbody> <td> Vishaal </td> <td> Dangert </td> </tbody>
-	</table>
+	
+	<div class="container-fluid" id="ViewContainer">
 	</div>
 
 
@@ -54,7 +50,9 @@
     <script src="js/lib/backbone/backbone.min.js"> </script> <!-- backbone.js -->
     <script src="js/lib/bootstrap/bootstrap.min.js"></script>
     <script src="js/models/MRFQuestion.js"></script>
-    <script src="js/views/MRFQuestions.js"></script>
+    <script src="js/views/MRFQuestionView.js"></script>
+    <script src="js/collections/MRFQuestions.js"></script>
+    <script src="js/views/MRFQuestionsView.js"></script>
     <script src="js/mrf_questions.js"></script>
 	</body>
 </html>
