@@ -3,5 +3,9 @@ var MRFQuestion = Backbone.Model.extend({
 
 	initialize: function() {
 		console.log('MRfQuestion initailized!');
+	},
+
+	deactivate: function() {
+		this.save({ active: 0 });
 	}
 });

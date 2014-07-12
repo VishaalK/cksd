@@ -1,7 +1,15 @@
+define(['jquery', 'underscore', 'backbone', 'models/MRFQuestion', 'text!templates/_MRFQuestionView.html'],
+function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
+	var MRFQuestionView = Backbone.View.extend({
+
+	});
+
+	return MRFQuestionView;
+});
 var MRFQuestionView = Backbone.View.extend({
 	tagName: 'li',
 	template: '<h5>  \
-					<span name="drop" style="cursor: pointer;"> <%= text %> </span> <% if (!active) { %> <span style="color: green;" class="glyphicon glyphicon-ok"></span> <% }  else { %> <span style="color: red;" class="glyphicon glyphicon-remove"></span> <% } %>\
+					<% if (active) { %> <span style="color: green;" class="glyphicon glyphicon-ok"></span> <% }  else { %> <span style="color: red;" class="glyphicon glyphicon-remove"></span> <% } %> <span name="drop" style="cursor: pointer;"> <%= text %> </span>  <span class="glyphicon glyphicon-pencil"></span>\
 				</h5> \
 				<div name="committees" style="display: none;">  \
 			    <table class="table table-bordered" id="UsersList"> \
@@ -53,7 +61,15 @@ var MRFQuestionView = Backbone.View.extend({
 
 	events: {
 		'click span[name=drop]'		: 	'toggleDropdown',
-		'click td' 					:   'toggleActiveQuestion'
+		'click td' 					:   'toggleActiveQuestion',
+		'click button[name=delete]' : 	'deactiveQuestion',
+	},
+
+	deactiveQuestion: function(e) {
+		if (!confirm('Are you sure you want to deactive this question?')) {
+			return;
+		}
+		this.model.deactivate(); // this.model.save({ active: 0 });
 	},
 
 	toggleActiveQuestion: function(e) {
