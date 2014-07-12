@@ -1,0 +1,23 @@
+<h5>  
+		<% if (active) { %> 
+			<span style="color: green;" class="glyphicon glyphicon-ok"></span> 
+		<% }  else { %> 
+			<span style="color: red;" class="glyphicon glyphicon-remove"></span> 
+		<% } %> 
+		<span name="drop" style="cursor: pointer;"> <%= text %> </span> <span class="glyphicon glyphicon-pencil"></span>
+</h5> 
+<div name="committees" style="display: none;">  
+	<table class="table table-bordered" id="UsersList"> 
+	<% 	var count = 0;  
+	$.each(committees, function(ind, com) {  
+		if (count === 0) { %> 
+			<tr> 
+	<%	} 
+		count++; %> 
+		<td data-id="<%= com.committeeID %>" class=<% if (activeCommittees.indexOf(com.committeeID) !== -1) { %> "active" <% } %> > <%= com.committeeName %> </td> 
+	<%	if (count === 5) { count = 0; %> 
+		</tr> 
+	<%	} 
+	});	%> 
+	</table>
+</div>
