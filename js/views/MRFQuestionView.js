@@ -1,7 +1,11 @@
 define(['jquery', 'underscore', 'backbone', 'models/MRFQuestion', 'text!templates/_MRFQuestionView.html'],
 function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 	var MRFQuestionView = Backbone.View.extend({
+		template: mrfQuestionTemplate,
+		tagName: 'li',
+		events: {
 
+		},
 	});
 
 	return MRFQuestionView;
