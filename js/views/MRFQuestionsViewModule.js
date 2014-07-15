@@ -1,4 +1,4 @@
-define(['underscore', 'Backbone', 'jquery', 'views/MRFQuestionView'], 
+define(['underscore', 'backbone', 'jquery', 'views/MRFQuestionView'], 
 function(_, Backbone, $, MRFQuestionView) {
 	var MRFQuestionsView = Backbone.View.extend({
 		tagName: 'ul',

@@ -1,4 +1,4 @@
-define(['underscore', 'Backbone', 'models/MRFQuestionModule'], function(_, $, MRFQuestion) {
+define(['underscore', 'backbone', 'models/MRFQuestionModule'], function(_, $, MRFQuestion) {
 	var MRFQuestions = Backbone.Collection.extend({
 		model: MRFQuestion,
 		url: '_api/mrf_questions/index.php',

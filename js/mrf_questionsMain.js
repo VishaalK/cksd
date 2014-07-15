@@ -28,6 +28,6 @@ require.config({
 	}
 });
 
-require(['users'], function(usersPage){
-	usersPage.initialize();
+require(['mrf_questions'], function(mrfQuestionsPage){
+	mrfQuestionsPage.initialize();
 });

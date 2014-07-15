@@ -51,17 +51,8 @@
 	<a id="editable"> text </a>
 
 	<script> var session = <?php echo json_encode(array("username" => "vishaalk")); ?> </script>
-	<script src="js/lib/jquery/jquery-1.10.2.js"></script> <!-- jQuery -->
-	<script src="js/lib/jquery/jquery-ui-1.10.4.min.js"></script> <!-- jQuery -->
-    <script src="js/lib/underscore/underscore.js"> </script> <!-- underscore.js -->
-    <script src="js/lib/backbone/backbone.min.js"> </script> <!-- backbone.js -->
+	<script type="text/javascript" data-main="js/mrf_questionsMain.js" src="js/lib/require/require.js"></script>
     <script src="js/lib/bootstrap/bootstrap.min.js"></script>
-    <script src="js/models/MRFQuestion.js"></script>
-    <script src="js/views/MRFQuestionViewBackup.js"></script>
-    <script src="js/collections/MRFQuestions.js"></script>
-    <script src="js/views/MRFQuestionsView.js"></script>
-    <script src="js/mrf_questions.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-    <script> $.fn.editable.defaults.mode = 'inline'; </script>
 	</body>
 </html>

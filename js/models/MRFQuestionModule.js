@@ -1,4 +1,4 @@
-define(['underscore', 'Backbone'], 
+define(['underscore', 'backbone'], 
 function(_, Backbone) {
 	var MRFQuestion = Backbone.Model.extend({
 		urlRoot: '_api/mrf_questions/index.php/',
@@ -11,4 +11,6 @@ function(_, Backbone) {
 			this.save({ active: 0 });
 		}
 	});
+
+	return MRFQuestion;
 });
