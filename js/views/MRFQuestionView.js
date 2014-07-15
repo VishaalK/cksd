@@ -14,6 +14,11 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 			'click span[name=drop]'		: 	'toggleDropdown',
 			'click td' 					:   'toggleActiveQuestion',
 			'click button[name=delete]' : 	'deactiveQuestion',
+			'click span[name=edit]'		: 	'edit'
+		},
+
+		edit: function(e) {
+
 		},
 
 		deactiveQuestion: function(e) {

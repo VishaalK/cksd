@@ -1,10 +1,10 @@
 <h5>  
-		<% if (active) { %> 
-			<span style="color: green;" class="glyphicon glyphicon-ok"></span> 
-		<% }  else { %> 
-			<span style="color: red;" class="glyphicon glyphicon-remove"></span> 
-		<% } %> 
-		<span name="drop" style="cursor: pointer;"> <%= text %> </span> <span class="glyphicon glyphicon-pencil"></span>
+	<% if (active) { %> 
+		<span style="color: green;" class="glyphicon glyphicon-ok"></span> 
+	<% }  else { %> 
+		<span style="color: red;" class="glyphicon glyphicon-remove"></span> 
+	<% } %> 
+	<span name="drop" style="cursor: pointer;"> <%= text %> </span> <span name="edit" style="cursor: pointer;" class="glyphicon glyphicon-pencil"></span>
 </h5> 
 <div name="committees" style="display: none;">  
 	<table class="table table-bordered" id="UsersList"> 
