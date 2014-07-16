@@ -18,12 +18,22 @@ require.config({
 		text: 'lib/plugins/text',
 		moment: 'utils/moment.min',
 		'typeahead.twitter': 'lib/jquery/typeahead.jquery',
-		'bloodhound': 'lib/jquery/bloodhound'
+		'bloodhound': 'lib/jquery/bloodhound',
+		'bootstrap-editable': 'lib/bootstrap/bootstrap-editable'
 	},
 	shim: {
 		"bloodhound": {
 	        deps: ["jquery"],
 	        exports: "Bloodhound"
+	    },
+	    "backbone": {
+	    	deps: ["jquery", "underscore"]
+	    },
+        "bootstrap": {
+	    	deps: ["jquery"]
+	    },
+	    "bootstrap-editable": {
+	    	deps: ["jquery", "bootstrap"]
 	    }
 	}
 });

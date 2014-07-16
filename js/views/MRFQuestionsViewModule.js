@@ -1,9 +1,20 @@
-define(['underscore', 'backbone', 'jquery', 'views/MRFQuestionView'], 
+define(['underscore', 'backbone', 'jquery', 'views/MRFQuestionView', 'models/MRFQuestion'], 
 function(_, Backbone, $, MRFQuestionView) {
 	var MRFQuestionsView = Backbone.View.extend({
-		tagName: 'ul',
+		// tagName: 'ul',
 		className: 'list-unstyled',
-		template: '<ul class="list-unstyled"></ul>',
+		template: '<ul class="list-unstyled"></ul><a id="add-question">Add Question</a> \
+					<div style="display: none;" id="new-question-form"><input  id="new-question-input"></input> \
+					<button class="btn btn-sm btn-primary" type=button id="submit-question">Submit</button></div>',
+
+		events: {
+			'click #add-question': 'lerty'
+		},
+
+		lerty: function(e) {
+			console.log('lerty');
+			$('#new-question-form').slideToggle('fast');
+		},
 
 		render: function() {
 			var $this = this;

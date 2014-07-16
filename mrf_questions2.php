@@ -40,7 +40,7 @@
 	</div>
 	<div class="container-fluid">
 		<div class="text-center">
-			<h3> Monthly Report Form Question Editor </h3><button style="margin-top: -40px;" type=button class="pull-right btn btn-small btn-primary"> New Question </button>
+			<h3> Monthly Report Form Question Editor </h3><button style="margin-top: -40px;" type=button class="pull-right btn btn-sm btn-primary"> New Question </button>
 		</div> 
 	</div>
 	<div class="container-fluid" id="QuestionContainer"> 
@@ -48,11 +48,9 @@
 	
 	<div class="container-fluid" id="ViewContainer">
 	</div>
-	<a id="editable"> text </a>
 
 	<script> var session = <?php echo json_encode(array("username" => "vishaalk")); ?> </script>
 	<script type="text/javascript" data-main="js/mrf_questionsMain.js" src="js/lib/require/require.js"></script>
-    <script src="js/lib/bootstrap/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 	</body>
 </html>

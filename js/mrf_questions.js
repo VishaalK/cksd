@@ -4,9 +4,10 @@
 // 		var v = new MRFQuestionView({ model: q, el: $('#QuestionContainer') });
 // 	}
 // })
-define(['jquery','underscore','backbone','collections/MRFQuestionsModule', 'views/MRFQuestionsViewModule'], 
+define(['jquery','underscore','backbone','collections/MRFQuestionsModule', 'views/MRFQuestionsViewModule', 'bootstrap'], 
 function($, _, Backbone, MRFQuestions, MRFQuestionsView) {
 	var initialize = function() {
+		// create an overarching view here ?
 		var c = new MRFQuestions().fetch({
 			success: function(coll) {
 				var cv = new MRFQuestionsView({ collection: coll, el: $('#ViewContainer') });
