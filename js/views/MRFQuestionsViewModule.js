@@ -3,17 +3,41 @@ function(_, Backbone, $, MRFQuestionView) {
 	var MRFQuestionsView = Backbone.View.extend({
 		// tagName: 'ul',
 		className: 'list-unstyled',
-		template: '<ul class="list-unstyled"></ul><a id="add-question">Add Question</a> \
-					<div style="display: none;" id="new-question-form"><input  id="new-question-input"></input> \
-					<button class="btn btn-sm btn-primary" type=button id="submit-question">Submit</button></div>',
+		template: '<ul class="list-unstyled"></ul> \
+					<form class="form-inline" role="form"> \
+					  <div class="form-group"> \
+					    <label for="exampleInputEmail2">New Question</label> \
+					    <input style="min-width: 768px;" type="email" class="form-control" id="new-question" placeholder="Can I have some more, sir?"> \
+					  </div> \
+					  <button type="button" class="btn btn-default">Create</button> \
+					</form>',
 
 		events: {
-			'click #add-question': 'lerty'
+			'click #add-question'	: 'addQuestion'
 		},
 
-		lerty: function(e) {
+		initialize: function() {
+			// fetch the committees here and pass them to each view
+		},
+
+		addQuestion: function(e) {
 			console.log('lerty');
-			$('#new-question-form').slideToggle('fast');
+		},
+
+		// renders a single question, no matter what
+		renderQuestion: function(question) {
+			var $this = this;
+			var v = new MRFQuestionView({ model: question });
+			$.when(v.render()).then(function() {
+				$this.$el.find('ul').append(v.el);
+			})
+		},
+
+		renderQuestions: function(questions) {
+			var $this = this;
+			$.each(questions, function(ind, question) {
+				$this.renderQuestion(question);
+			});
 		},
 
 		render: function() {
@@ -22,7 +46,9 @@ function(_, Backbone, $, MRFQuestionView) {
 			$this.$el.html(compiledTemplate);
 			// this.$el.html(this.el);
 			$.each(this.collection.models, function(ind, obj) {
-				console.log(obj);
+				if (!obj.get('active')) {
+					return;
+				}
 				var v = new MRFQuestionView({ model: obj });
 				var promise = v.render();
 				$.when(promise).then(function() {

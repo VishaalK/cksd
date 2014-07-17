@@ -3,6 +3,10 @@ define(['underscore', 'backbone', 'models/MRFQuestionModule'], function(_, $, MR
 		model: MRFQuestion,
 		url: '_api/mrf_questions/index.php',
 
+		active: function() {
+			return this.filter(function(MRFQuestion) { return MRFQuestion.get('active'); })
+		},
+		
 		lerty: function(e) {
 			console.log('lerty');
 		},

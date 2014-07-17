@@ -51,6 +51,6 @@
 
 	<script> var session = <?php echo json_encode(array("username" => "vishaalk")); ?> </script>
 	<script type="text/javascript" data-main="js/mrf_questionsMain.js" src="js/lib/require/require.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script> -->
 	</body>
 </html>

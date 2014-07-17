@@ -7,6 +7,11 @@ function(_, Backbone) {
 			console.log('MRFQuestion initailized!');
 		},
 
+		parse: function(response) {
+			response.active = parseInt(response.active, 10);
+			return response;
+		},
+
 		deactivate: function() {
 			this.save({ active: 0 });
 		}

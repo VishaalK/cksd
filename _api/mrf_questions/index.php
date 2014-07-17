@@ -8,7 +8,7 @@ require 'Slim/Slim.php';
 $app = new \Slim\Slim();
 $app->get('/', function () {
     global $mysqli;
-    $query = "select * from mrf_questions";
+    $query = "select * from mrf_questions order by active desc, id asc";
     $results = $mysqli->query($query);
 /*    foreach($results as $row) {
         echo json_encode($row);
@@ -24,9 +24,12 @@ $app->get('/:id(/)', function($id) use ($app) {
 	echo json_encode($results->fetchObject()); 
 });
 
-$app->delete('/:id(/)', function($id) use ($app) {
+$app->delete('/:id(/)', function($ids) use ($app) {
 	global $mysqli;
-	$id = intval($id);
+	// accept an array using is_array($id) -> array_map(function($id) { }, $id)
+	// SELECT * from table where id in ($ids)
+	$arr = array();
+	(is_array($ids)) ? $arr.push());
 	$query = "delete from mrf_questions where id=" . $id;
 	$results = $mysqli->query($query);
 });

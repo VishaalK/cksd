@@ -33,7 +33,8 @@ require.config({
 	    	deps: ["jquery"]
 	    },
 	    "bootstrap-editable": {
-	    	deps: ["jquery", "bootstrap"]
+	    	deps: ["jquery", "bootstrap"],
+	    	exports: 'jQuery.fn.editable'
 	    }
 	}
 });

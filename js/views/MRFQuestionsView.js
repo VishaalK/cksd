@@ -11,6 +11,10 @@ var MRFQuestionsView = Backbone.View.extend({
 		// this.$el.html(this.el);
 		$.each(this.collection.models, function(ind, obj) {
 			console.log(obj);
+			if (!obj.get('active')) {
+				console.log('wtf');
+				return;
+			}
 			var v = new MRFQuestionView({ model: obj });
 			var promise = v.render();
 			$.when(promise).then(function() {

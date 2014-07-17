@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'models/MRFQuestionModule', 'text!templates/_MRFQuestionView.html'],
+define(['jquery', 'underscore', 'backbone', 'models/MRFQuestionModule', 'text!templates/_MRFQuestionView.html', 'bootstrap-editable'],
 function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 	var MRFQuestionView = Backbone.View.extend({
 		template: mrfQuestionTemplate,
@@ -7,18 +7,30 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 		initialize: function() {
 			// Remove this model if the question is deactivated
 			this.listenTo(this.model, 'destroy', this.remove);
-			this.input = $('span[name=drop]');
+			this.input = this.$el.find('span[name=drop]');
 		},
 
 		events: {
 			'click span[name=drop]'		: 	'toggleDropdown',
 			'click td' 					:   'toggleActiveQuestion',
 			'click button[name=delete]' : 	'deactiveQuestion',
-			'click span[name=edit]'		: 	'edit'
+			'click span[name=edit]'		: 	'edit',
+			'click img[name=internal]' 	:   'toggleInternalQuestions',
+			'click img[name=external]'  :   'toggleExternalQuestions'
 		},
 
 		edit: function(e) {
-
+			//$('span[name=edit]').ed
+			var $el = this.$el;
+			// this.$el.find('span[name=edit]').click(function(e) {
+			//     e.stopPropagation();
+			//     $el.find('span[name=drop]').editable('toggle');
+			// });
+			// $('span[name=edit]').editable({
+			// 	type: 'text',
+			// 	pk: 1,
+			// 	selector: 'span[name-drop]'
+			// });
 		},
 
 		deactiveQuestion: function(e) {
@@ -69,6 +81,24 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 			$(e.target).toggleClass('active');
 		},
 
+		toggleInternalQuestions: function(e) {
+			// if any of them are active, deactive them
+			// otherwise, activate all of them
+			console.log('internal');
+			// var type = (this.$el.find('[data-circle=internal].active').length !== 0) ? 'DELETE' : 'POST';
+			// $.ajax({
+			// 	url: url,
+			// 	type: type,
+			// })
+		},
+
+		toggleExternalQuestions: function(e) {
+			// var committees = $this.model.committees;
+			// $.each(committees, function(ind, obj) {
+
+			// })
+		},
+
 		toggleDropdown: function(e) {
 			// this.$el.find('span[name=drop]').toggleClass('glyphicon-chevron-down glyphicon-chevron-right', 1000);
 			this.$el.find('div[name=committees]').slideToggle('fast');
@@ -100,6 +130,7 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 			return $.when(promise1, promise2).then(function () {
 				var data = _.extend($this.model.attributes);
 				var compiledTemplate = _.template($this.template);
+				console.log($this.model.attributes);
 				$this.$el.html(compiledTemplate(data));
 			});// var template = '<div class="col-md-2" data-id={committeeID}> committeeName </div>'
 		}
