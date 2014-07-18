@@ -16,6 +16,15 @@ $app->get('/', function () {
     echo json_encode($results->fetchAll(PDO::FETCH_OBJ));
 });
 
+// $app->delete('/bulk/:ids+', function($ids) {
+// 	global $mysqli;
+// 	echo json_encode($ids);
+
+// 	// $query = "delete from mrf_questions where committeeID in (" . join(",", $ids) . ")";
+// 	//$results = $mysqli->query($query);
+// 	//echo json_encode($results->fetchAll(PDO::FETCH_OBJ));
+// });
+
 $app->get('/:id(/)', function($id) use ($app) {
 	global $mysqli;
 	$id = intval($id);
@@ -28,8 +37,6 @@ $app->delete('/:id(/)', function($ids) use ($app) {
 	global $mysqli;
 	// accept an array using is_array($id) -> array_map(function($id) { }, $id)
 	// SELECT * from table where id in ($ids)
-	$arr = array();
-	(is_array($ids)) ? $arr.push());
 	$query = "delete from mrf_questions where id=" . $id;
 	$results = $mysqli->query($query);
 });

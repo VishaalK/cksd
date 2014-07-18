@@ -1,5 +1,7 @@
 define(['jquery', 'underscore', 'backbone', 'models/MRFQuestionModule', 'text!templates/_MRFQuestionView.html', 'bootstrap-editable'],
 function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
+	
+
 	var MRFQuestionView = Backbone.View.extend({
 		template: mrfQuestionTemplate,
 		tagName: 'li',
@@ -13,7 +15,7 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 		events: {
 			'click span[name=drop]'		: 	'toggleDropdown',
 			'click td' 					:   'toggleActiveQuestion',
-			'click button[name=delete]' : 	'deactiveQuestion',
+			'click button[name=delete]' : 	'deactivateQuestion',
 			'click span[name=edit]'		: 	'edit',
 			'click img[name=internal]' 	:   'toggleInternalQuestions',
 			'click img[name=external]'  :   'toggleExternalQuestions'
@@ -33,7 +35,7 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 			// });
 		},
 
-		deactiveQuestion: function(e) {
+		deactivateQuestion: function(e) {
 			if (!confirm('Are you sure you want to deactive this question?')) {
 				return;
 			}
@@ -42,14 +44,10 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 
 		toggleActiveQuestion: function(e) {
 			var commmitteeId = $(e.target).data('id'); // post a request
-			console.log($(e.target).hasClass('active'));
-			var type = ($(e.target).hasClass('active')) ? 'DELETE' : 'POST';
-			var url = '_api/mrf_questions/' + this.model.get('id') + '/active/' + commmitteeId;
-			console.log(url);
-
 			var MRFQuestionRel = Backbone.Model.extend({
 				urlRoot: '_api/mrf_questions/index.php/' + this.model.get('id') + '/active/',
 			});
+			
 			var isActive = $(e.target).hasClass('active');
 			if (isActive) {
 				var test = new MRFQuestionRel({ id: $(e.target).data('id') });
@@ -59,6 +57,7 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 					}
 				});
 			} else {
+				console.log('saving');
 				var test = new MRFQuestionRel();
 				console.log($(e.target).data('id'));
 				test.set('_id', $(e.target).data('id'));
@@ -81,10 +80,49 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 			$(e.target).toggleClass('active');
 		},
 
+		deactivateCommittee: function(com) {
+			var MRFQuestionRel = Backbone.Model.extend({
+				urlRoot: '_api/mrf_questions/index.php/' + this.model.get('id') + '/active/',
+			});
+			var test = new MRFQuestionRel({ id: com.committeeID });
+			test.destroy();	
+			this.$el.find('[data-id=' + com.committeeID + ']').removeClass('active');
+		},
+
+		activateCommittee: function(com) {
+			var MRFQuestionRel = Backbone.Model.extend({
+				urlRoot: '_api/mrf_questions/index.php/' + this.model.get('id') + '/active/',
+			});
+			var test = new MRFQuestionRel();
+			test.set('_id', com.committeeID);
+			test.save();
+			this.$el.find('[data-id=' + com.committeeID + ']').addClass('active');
+		},
+
+
 		toggleInternalQuestions: function(e) {
 			// if any of them are active, deactive them
 			// otherwise, activate all of them
-			console.log('internal');
+			var $this = this;
+			var committees = this.model.get('committees');
+			var atleastOneActive = _.find(committees, function(com) {
+				return com.circle === 'internal' && $this.$el.find('[data-id=' + com.committeeID + ']').hasClass('active');
+			});
+			if (atleastOneActive) {
+				console.log('at least one active');
+				$.each(committees, function(ind, com) {
+					if (com.circle === 'internal') {
+						$this.deactivateCommittee(com)
+					}
+				});
+			} else {
+				console.log('none active, so active all');
+				$.each(committees, function(ind, com) {
+					if (com.circle === 'internal') {
+						$this.activateCommittee(com);
+					}
+				});
+			}
 			// var type = (this.$el.find('[data-circle=internal].active').length !== 0) ? 'DELETE' : 'POST';
 			// $.ajax({
 			// 	url: url,
@@ -95,6 +133,7 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 		toggleExternalQuestions: function(e) {
 			// var committees = $this.model.committees;
 			// $.each(committees, function(ind, obj) {
+			var $this = this;
 
 			// })
 		},
