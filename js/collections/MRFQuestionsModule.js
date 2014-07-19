@@ -11,8 +11,16 @@ define(['underscore', 'backbone', 'models/MRFQuestionModule'], function(_, $, MR
 			console.log('lerty');
 		},
 
+		meta: function(prop, value) {
+			if (value === undefined) {
+				return this._meta[prop]
+			} else {
+				this._meta[prop] = value;
+			}
+	    },
+
 		initialize: function() {
-			console.log('MRFQuestions initialized');
+			this._meta = {};
 		}
 	});
 

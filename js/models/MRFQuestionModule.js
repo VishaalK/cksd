@@ -4,7 +4,6 @@ function(_, Backbone) {
 		urlRoot: '_api/mrf_questions/index.php/',
 
 		initialize: function() {
-			console.log('MRFQuestion initailized!');
 		},
 
 		parse: function(response) {

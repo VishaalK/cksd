@@ -11,6 +11,8 @@ var MRFQuestions = Backbone.Collection.extend({
 		console.log('lerty');
 	},
 
+	
+
 	initialize: function() {
 		console.log('MRFQuestions initialized');
 	}

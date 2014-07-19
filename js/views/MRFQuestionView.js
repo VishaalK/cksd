@@ -51,21 +51,11 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 			var isActive = $(e.target).hasClass('active');
 			if (isActive) {
 				var test = new MRFQuestionRel({ id: $(e.target).data('id') });
-				test.destroy({
-					success: function() {
-						console.log('success');
-					}
-				});
+				test.destroy();
 			} else {
-				console.log('saving');
 				var test = new MRFQuestionRel();
-				console.log($(e.target).data('id'));
 				test.set('_id', $(e.target).data('id'));
-				test.save({
-					success: function() {
-						console.log('this is pathetic');
-					}
-				})
+				test.save();
 			}
 			// $.ajax({
 			//     url: url,
@@ -99,43 +89,38 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 			this.$el.find('[data-id=' + com.committeeID + ']').addClass('active');
 		},
 
-
-		toggleInternalQuestions: function(e) {
-			// if any of them are active, deactive them
-			// otherwise, activate all of them
+		// circle is a 
+		toggleCircleQuestions: function(circle) {
+			if (!this.$el.find('div[name=committees]').is(':visible')) {
+				return;
+			}
 			var $this = this;
 			var committees = this.model.get('committees');
 			var atleastOneActive = _.find(committees, function(com) {
-				return com.circle === 'internal' && $this.$el.find('[data-id=' + com.committeeID + ']').hasClass('active');
+				return com.circle === circle && $this.$el.find('[data-id=' + com.committeeID + ']').hasClass('active');
 			});
+
 			if (atleastOneActive) {
-				console.log('at least one active');
 				$.each(committees, function(ind, com) {
-					if (com.circle === 'internal') {
-						$this.deactivateCommittee(com)
+					if (com.circle === circle) { 
+						$this.deactivateCommittee(com);
 					}
 				});
 			} else {
-				console.log('none active, so active all');
 				$.each(committees, function(ind, com) {
-					if (com.circle === 'internal') {
+					if (com.circle === circle) {
 						$this.activateCommittee(com);
 					}
 				});
 			}
-			// var type = (this.$el.find('[data-circle=internal].active').length !== 0) ? 'DELETE' : 'POST';
-			// $.ajax({
-			// 	url: url,
-			// 	type: type,
-			// })
+		},
+
+		toggleInternalQuestions: function(e) {
+			this.toggleCircleQuestions('internal');
 		},
 
 		toggleExternalQuestions: function(e) {
-			// var committees = $this.model.committees;
-			// $.each(committees, function(ind, obj) {
-			var $this = this;
-
-			// })
+			this.toggleCircleQuestions('external');
 		},
 
 		toggleDropdown: function(e) {
@@ -169,7 +154,6 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 			return $.when(promise1, promise2).then(function () {
 				var data = _.extend($this.model.attributes);
 				var compiledTemplate = _.template($this.template);
-				console.log($this.model.attributes);
 				$this.$el.html(compiledTemplate(data));
 			});// var template = '<div class="col-md-2" data-id={committeeID}> committeeName </div>'
 		}
