@@ -24,7 +24,8 @@ function($, _, Backbone, MRFQuestions, MRFQuestionsView){
             $(this).tab('show');
         });
 
-        $('#close').button('click', function(e) {
+        $('#close').click('click', function(e) {
+            console.log('closing da views');
             if ($this.view) {
                 $this.view.close();
             }

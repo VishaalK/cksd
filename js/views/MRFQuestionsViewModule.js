@@ -70,6 +70,7 @@ function(_, Backbone, $, MRFQuestionView) {
 
 		render: function() {
 			this.subViews = [];
+			var subViews = this.subViews;
 
 			var $this = this;
 			var compiledTemplate = _.template(this.template);
@@ -90,7 +91,7 @@ function(_, Backbone, $, MRFQuestionView) {
 
 		close: function() {
 			console.log('closing all subviews');
-			$.each(this.subViews, function(ind, view) {
+			$.each(this.subViews, function(ind, v) {
 				v.remove();
 			});
 			this.remove()
