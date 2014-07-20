@@ -16,6 +16,18 @@ $app->get('/', function () {
     echo json_encode($results->fetchAll(PDO::FETCH_OBJ));
 });
 
+$app->post('/', function() use ($app) {
+	global $mysqli;
+	$dataIn = $app->request()->getBody();
+	$dataIn = json_decode($dataIn);
+	$text = $dataIn->{'text'};
+	$active = $dataIn->{'active'};
+	$stmt = $mysqli->prepare("INSERT INTO mrf_questions (text, active) VALUES (:text, :active)");
+	$stmt->bindParam(':text', $text);
+	$stmt->bindParam(':active', $active);
+	$stmt->execute();
+	echo json_encode($stmt->fetchAll(PDO::FETCH_OBJ), JSON_PRETTY_PRINT);
+});
 // $app->delete('/bulk/:ids+', function($ids) {
 // 	global $mysqli;
 // 	echo json_encode($ids);

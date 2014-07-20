@@ -1,8 +1,8 @@
 <h4> 
 	<% if (active == 1) { %> 
-		<span style="color: green;" class="glyphicon glyphicon-ok"></span> 
+		<span name="check" style="color: green; cursor: pointer;" class="glyphicon glyphicon-ok check"></span> 
 	<% }  else { %> 
-		<span style="color: red;" class="glyphicon glyphicon-remove"></span> 
+		<span name="check" style="color: #eee; cursor: pointer;" class="glyphicon glyphicon-ok check"></span> 
 	<% } %> 
 
 		<span name="drop" style="cursor: pointer;"> <%= text %> </span> <span name="edit" style="cursor: pointer;" class="glyphicon glyphicon-pencil"></span>  
@@ -10,14 +10,30 @@
 		<img name="external" src="img/april.png" style="width: 40px; height: auto; cursor: pointer;"/>
 </h4>
 <div name="committees" style="display: none;">  
-	<table class="table table-bordered" id="UsersList"> 
+	<label for="external-committees"> External </label>
+	<table class="table table-bordered" id="external-committees"> 
 	<% 	var count = 0;  
-	$.each(committees, function(ind, com) {  
+	$.each(externalCommittees, function(ind, com) {  
 		if (count === 0) { %> 
 			<tr> 
 	<%	} 
 		count++; %> 
-		<td data-id="<%= com.committeeID %>" data-circle="<%= com.circle %>" class=<% if (activeCommittees.indexOf(com.committeeID) !== -1) { %> "active" <% } %> > <%= com.committeeName %> </td> 
+		<td data-id="<%= com.committeeID %>" data-circle="<%= com.circle %>" class=<% if (activeCommittees.indexOf(com.committeeID) !== -1) { %> "active" <% } %> > <b> <%= com.committeeName %> </b> </td> 
+	<%	if (count === 5) { count = 0; %> 
+		</tr> 
+	<%	} 
+	});	%> 
+	</table>
+
+	<label for="external-committees"> Internal  </label>
+	<table class="table table-bordered" id="internal-committees"> 
+	<% 	count = 0;  
+	$.each(internalCommittees, function(ind, com) {  
+		if (count === 0) { %> 
+			<tr> 
+	<%	} 
+		count++; %> 
+		<td data-id="<%= com.committeeID %>" data-circle="<%= com.circle %>" class=<% if (activeCommittees.indexOf(com.committeeID) !== -1) { %> "active" <% } %> > <b> <%= com.committeeName %> </b></td> 
 	<%	if (count === 5) { count = 0; %> 
 		</tr> 
 	<%	} 

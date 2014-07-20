@@ -22,12 +22,24 @@
 		td {
 			background-color: rgba(86,61,124,.15)
 		}
+		#external-committees td {
+			width: 20%;
+		}
+		#internal-committees td {
+			width: 20%;
+		}
 		td.active {				
 			background-color: #CCFFCC !important;
 		}
 		.table-bordered {
 			border: 1px solid rgba(86,61,124,.2);
 			font-size: 14px;
+		}
+		span[name=checkbox] :hover {
+			color: #FFFFFF;
+		}
+		.check :hover {
+			color: #FFFFFF;
 		}
 		</style>
 	</head>
@@ -39,11 +51,16 @@
 		<div style="text-align: right" class="col-md-3">Logout</div>
 	</div>
 	<div class="container-fluid">
+
 		<div class="text-center">
 			<h3> Monthly Report Form Question Editor </h3><button style="margin-top: -40px;" type=button class="pull-right btn btn-sm btn-primary"> New Question </button>
 		</div> 
 	</div>
 	<div class="container-fluid" id="QuestionContainer"> 
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="active"><a href="#question-view" role="tab" data-toggle="tab">View by Question</a></li>
+			<li><a href="#committee-view" role="tab" data-toggle="tab">View by Committee</a></li>
+		</ul>
 	</div>
 	
 	<div class="container-fluid" id="ViewContainer">
@@ -51,6 +68,7 @@
 
 	<script> var session = <?php echo json_encode(array("username" => "vishaalk")); ?> </script>
 	<script type="text/javascript" data-main="js/mrf_questionsMain.js" src="js/lib/require/require.js"></script>
+
     <!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script> -->
 	</body>
 </html>
