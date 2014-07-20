@@ -5,7 +5,6 @@ function(_, Backbone, $, MRFQuestionView) {
 		className: 'list-unstyled',
 		template: '<form style="margin-top: 5px;" class="form-inline" role="form"> \
 					  <div class="form-group"> \
-					    <label for="exampleInputEmail2">New Question</label> \
 					    <input style="min-width: 768px;" type="text" class="form-control" id="new-question" placeholder="Can I have some more, sir?"> \
 					  </div> \
 					  <button type="button" id="add-question" class="btn btn-default">Create</button> \
@@ -70,8 +69,7 @@ function(_, Backbone, $, MRFQuestionView) {
 		},
 
 		render: function() {
-			var $this = this;
-			
+			this.subViews = [];
 
 			var $this = this;
 			var compiledTemplate = _.template(this.template);
@@ -82,11 +80,20 @@ function(_, Backbone, $, MRFQuestionView) {
 				obj.set('externalCommittees', $this.externalCommittees);
 				obj.set('internalCommittees', $this.internalCommittees);
 				var v = new MRFQuestionView({ model: obj });
+				subViews.push(v);
 				var promise = v.render();
 				$.when(promise).then(function() {
 					$this.$el.find('ul').append(v.el);
 				});
-			})
+			});
+		},
+
+		close: function() {
+			console.log('closing all subviews');
+			$.each(this.subViews, function(ind, view) {
+				v.remove();
+			});
+			this.remove()
 		}
 	});
 	return MRFQuestionsView;

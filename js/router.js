@@ -11,10 +11,10 @@ var GalleryRouter = Backbone.Router.extend ({
             e.preventDefault();
             $this.navigate("#view", {trigger: true});
         })*/
-        $('#home').on('click', function(e) {
-            e.preventDefault();
-            $this.navigate("#home", {trigger: true});
-        });
+        // $('#home').on('click', function(e) {
+        //     e.preventDefault();
+        //     $this.navigate("#home", {trigger: true});
+        // });
     },
 
     home: function () {
@@ -23,7 +23,7 @@ var GalleryRouter = Backbone.Router.extend ({
 
     viewImage: function () {
         alert('you are viewing an image'); 
-    } 
+    }
 }); 
 
 //define our new instance of router 
