@@ -58,18 +58,15 @@
 	</div>
 	<div class="container-fluid" id="QuestionContainer"> 
 		<ul class="nav nav-tabs" role="tablist">
-			<li class="active"><a id="question-tab" href="#question-view" role="tab" >View by Question</a></li>
+			<li><a id="question-tab" href="#question-view" role="tab" >View by Question</a></li>
 			<li><a id="committee-tab" href="#committee-view" role="tab">View by Committee</a></li>
 		</ul>
 	</div>
-<!-- 	<div class="container-fluid" id="TabsContainer">
-		<ul role="tablist">
-			<li><a href="#question-view" id="question-tab" >View by Question</a></li>
-			<li><a href="#committee-view" id="committee-tab">View by Committee</a></li>
-		</ul>
-	</div> -->
 
 	<div class="container-fluid" id="ViewContainer">
+	</div>
+
+	<div class="container-fluid" id="CommitteeViewContainer" style="margin: 5px 5px;">
 	</div>
 
 	<script> var session = <?php echo json_encode(array("username" => "vishaalk")); ?> </script>

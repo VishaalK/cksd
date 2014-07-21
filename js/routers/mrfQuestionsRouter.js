@@ -9,6 +9,7 @@ function($, _, Backbone, MRFQuestions, MRFQuestionsView){
     },
 
     initialize: function() {
+        $.fn.editable.defaults.mode = 'inline';
         var $this = this;
         $('#question-tab').on('click', function(e) {
             console.log('question-tab');
@@ -33,29 +34,53 @@ function($, _, Backbone, MRFQuestions, MRFQuestionsView){
     },
 
     home: function() {
-        $.fn.editable.defaults.mode = 'inline';
-
-        if (this.view) {
-            console.log('already exists');
-            return;
-        }
         var $this = this;
-        var cv;
-        // create an overarching view here ?
         var prom = new MRFQuestions().fetch({
             success: function(coll) {
-                cv = new MRFQuestionsView({ collection: coll, el: $('#ViewContainer') });
-                cv.render();
+                $this.loadView(new MRFQuestionsView({ collection: coll, el: $('#ViewContainer') }) );
             }
-        });
+        })
+        // create an overarching view here ?
+        // var prom = new MRFQuestions().fetch({
+        //     success: function(coll) {
+        //         cv = new MRFQuestionsView({ collection: coll, el: $('#ViewContainer') });
+        //         cv.render();
+        //     }
+        // });
 
-        $.when(prom).then(function() {
-            $this.view = cv;
-        });
+        // $.when(prom).then(function() {
+        //     $this.view = cv;
+        // });
 
     },
 
     committeeView: function() {
+        var View = Backbone.View.extend({
+            template: '<div class="jumbotron"> \
+                            <h1>Hello, world!</h1> \
+                            <p> This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information. </p> \
+                            <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p> \
+                        </div>',
+
+            render: function() {
+                var compiledTemplate = _.template(this.template);
+                var data = {};
+                this.$el.append(compiledTemplate(data));
+            },
+            remove: function() {
+                this.$el.empty().off();
+                this.stopListening();
+                return this;
+            }
+        });
+
+        this.loadView(new View({ el: $('#CommitteeViewContainer') }));
+    },
+
+    loadView: function(view) {
+        this.view && this.view.remove();
+        this.view = view;
+        this.view.render();
     }
 
   });

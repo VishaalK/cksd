@@ -74,7 +74,7 @@ function(_, Backbone, $, MRFQuestionView) {
 
 			var $this = this;
 			var compiledTemplate = _.template(this.template);
-			$this.$el.html(compiledTemplate);
+			$this.$el.append(compiledTemplate);
 			// this.$el.html(this.el);
 			$.each(this.collection.models, function(ind, obj) {
 				obj.set('committees', $this.committees);
@@ -95,7 +95,13 @@ function(_, Backbone, $, MRFQuestionView) {
 				v.remove();
 			});
 			this.remove()
-		}
+		},
+
+		remove: function() {
+            this.$el.empty().off();
+            this.stopListening();
+            return this;
+        }
 	});
 	return MRFQuestionsView;
 });
