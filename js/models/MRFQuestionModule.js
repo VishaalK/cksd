@@ -9,6 +9,7 @@ function(_, Backbone) {
 		},
 
 		initialize: function() {
+
 		},
 
 		parse: function(response) {

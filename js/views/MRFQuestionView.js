@@ -8,7 +8,7 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 
 		initialize: function() {
 			// Remove this model if the question is deactivated
-			this.listenTo(this.model, 'syncalink', this.render);
+			this.listenTo(this.model, 'sync', this.render);
 			this.listenTo(this.model, 'destroy', this.remove);
 			this.input = this.$el.find('span[name=drop]');
 		},
@@ -58,16 +58,6 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 				test.set('_id', $(e.target).data('id'));
 				test.save();
 			}
-			// $.ajax({
-			//     url: url,
-			//     type: 'POST',
-			//     data: {
-			//     	"_METHOD:" : "DELETE"
-			//     },
-			//     success: function(result) {
-			//         console.log(result);
-			//     }
-			// });
 			$(e.target).toggleClass('active');
 		},
 

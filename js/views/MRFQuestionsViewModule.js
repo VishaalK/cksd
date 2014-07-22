@@ -1,5 +1,5 @@
-define(['underscore', 'backbone', 'jquery', 'views/MRFQuestionView', 'models/MRFQuestion'], 
-function(_, Backbone, $, MRFQuestionView) {
+define(['underscore', 'backbone', 'jquery', 'views/MRFQuestionView', 'models/MRFQuestionModule'], 
+function(_, Backbone, $, MRFQuestionView, MRFQuestion) {
 	var MRFQuestionsView = Backbone.View.extend({
 		// tagName: 'ul',
 		className: 'list-unstyled',
@@ -21,7 +21,9 @@ function(_, Backbone, $, MRFQuestionView) {
 			this.listenTo(this.collection, 'all', function(method) {
 				// console.log(method);
 			});
-			this.listenTo(this.collection, 'reset', this.render);
+			this.listenTo(this.collection, 'reset', function(coll) {
+				console.log('reset bitch!');
+			});
 			// fetch the committees here and pass them to each view
 			$.ajax({
 				url: '_api/committees/index.php',
@@ -75,6 +77,8 @@ function(_, Backbone, $, MRFQuestionView) {
 			var $this = this;
 			var compiledTemplate = _.template(this.template);
 			$this.$el.append(compiledTemplate);
+			var container = document.createDocumentFragment();
+			var promises = [];
 			// this.$el.html(this.el);
 			$.each(this.collection.models, function(ind, obj) {
 				obj.set('committees', $this.committees);
@@ -83,10 +87,27 @@ function(_, Backbone, $, MRFQuestionView) {
 				var v = new MRFQuestionView({ model: obj });
 				subViews.push(v);
 				var promise = v.render();
+				promises.push(promise);
 				$.when(promise).then(function() {
-					$this.$el.find('ul').append(v.el);
+					container.appendChild(v.el);
 				});
 			});
+
+			$.when.apply($, promises).then(function() {
+				$this.$el.find('ul').append(container);
+			});
+			// var m = new MRFQuestion({ 
+			// 	id: 1, 
+			// 	internalCommittees: $this.internalCommittees, 
+			// 	externalCommittees: $this.externalCommittees,
+			// 	committees: $this.committees
+			// });
+			// var v = new MRFQuestionView({ model: m });
+			// var promise = v.render();
+			// $.when(promise).then(function() {
+			// 	$this.$el.find('ul').append(v.el);
+			// });
+			// m.fetch();
 		},
 
 		close: function() {
