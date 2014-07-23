@@ -44,6 +44,23 @@
 		</style>
 	</head>
 	<body>
+	<script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1514528032099292',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 	<div class="container-fluid" style="margin-top: 10px;">
 		<div style="text-align: left" class="col-md-3">Logged in as: Vishaal Kalwani</div>
 		<div style="text-align: left" class="col-md-3">You are: Executive Committee Member</div>
@@ -70,7 +87,8 @@
 	</div>
 
 	<script> var session = <?php echo json_encode(array("username" => "vishaalk")); ?> </script>
-	<script type="text/javascript" data-main="js/mrf_questionsMainModule.js" src="js/lib/require/require.js"></script>
+	<!--<script type="text/javascript" data-main="js/mrf_questionsMainModule.js" src="js/lib/require/require.js"></script>-->
+	<script type="text/javascript" data-main="js/build/booya.js" src="js/lib/require/require.js"></script>
 
     <!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script> -->
 	</body>

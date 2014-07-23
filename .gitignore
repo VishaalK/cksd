@@ -4,3 +4,4 @@ lib/db_connect.php
 api/
 test.txt
 img/
+js/build/
