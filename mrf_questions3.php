@@ -69,6 +69,9 @@
 	<div class="container-fluid" id="CommitteeViewContainer" style="margin: 5px 5px;">
 	</div>
 
+	<div class="container-fluid" id="Container2">
+	</div>
+
 	<script> var session = <?php echo json_encode(array("username" => "vishaalk")); ?> </script>
 	<script type="text/javascript" data-main="js/mrf_questionsMainModule.js" src="js/lib/require/require.js"></script>
 	<!--<script type="text/javascript" data-main="js/build/booya.js" src="js/lib/require/require.js"></script>-->

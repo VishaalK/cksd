@@ -5,13 +5,12 @@ function(_, $, Backbone, Committee, MRFQuestion) {
 		template: 'Name: <%= committeeName %>, Req: <%= hourReq %>',
 
 		initialize: function() {
-			console.log('single question committee view initialized');
+			this.listenTo(this.model, 'sync', this.render);
 		},
 
 		render: function() {
 			var compiledTemplate = _.template(this.template);
-			var data = {};
-			this.$el.html(compiledTemplate(data));
+			return this.$el.html(compiledTemplate(this.model.attributes));
 		}
 	});
 

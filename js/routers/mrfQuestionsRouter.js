@@ -56,30 +56,29 @@ function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestion
     },
 
     committeeView: function() {
-        var View = Backbone.View.extend({
-            template: '<div class="jumbotron"> \
-                            <h1>Hello, world!</h1> \
-                            <p> This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information. </p> \
-                            <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p> \
-                        </div>',
+        // var View = Backbone.View.extend({
+        //     template: '<div class="jumbotron"> \
+        //                     <h1>Hello, world!</h1> \
+        //                     <p> This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information. </p> \
+        //                     <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p> \
+        //                 </div>',
 
-            render: function() {
-                var compiledTemplate = _.template(this.template);
-                var data = {};
-                this.$el.append(compiledTemplate(data));
-            },
-            remove: function() {
-                this.$el.empty().off();
-                this.stopListening();
-                return this;
-            }
-        });
-
-        //this.loadView(new View({ el: $('#CommitteeViewContainer') }));
+        //     render: function() {
+        //         var compiledTemplate = _.template(this.template);
+        //         var data = {};
+        //         this.$el.append(compiledTemplate(data));
+        //     },
+        //     remove: function() {
+        //         this.$el.empty().off();
+        //         this.stopListening();
+        //         return this;
+        //     }
+        // });
+        var self = this;
         var c = new Committees();
         c.fetch({
             success: function(data) {
-                console.log(data);
+                self.loadView(new MRFQuestionsCommitteesView({ collection: c, el: $('#Container2') }));               
             }
         });
     },
