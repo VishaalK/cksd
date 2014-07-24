@@ -1,5 +1,6 @@
-define(['underscore', 'jquery', 'Backbone'],
+define(['underscore', 'jquery', 'backbone'],
 function(_, $, Backbone) {
+	
 	var Committee = Backbone.Model.extend({
 		urlRoot: '_api/committees/index.php',
 		defaults: {

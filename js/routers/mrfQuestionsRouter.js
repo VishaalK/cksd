@@ -1,11 +1,12 @@
-define(['jquery','underscore','backbone','collections/MRFQuestionsModule', 'views/MRFQuestionsViewModule', 'bootstrap', 'bootstrap-editable'], 
-function($, _, Backbone, MRFQuestions, MRFQuestionsView){
+define(['jquery','underscore','backbone','collections/MRFQuestionsModule', 'collections/Committees',
+        'views/MRFQuestionsViewModule', 'views/MRFQuestionCommitteesView', 'bootstrap', 'bootstrap-editable'], 
+function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestionsCommitteesView){
   var AppRouter = Backbone.Router.extend({
     routes: {
       // Define some URL routes
-      '': 'home',
-      'question-view': 'home',
-      'committee-view': 'committeeView'
+      ''                : 'home',
+      'question-view'   : 'home',
+      'committee-view'  : 'committeeView'
     },
 
     initialize: function() {
@@ -20,7 +21,7 @@ function($, _, Backbone, MRFQuestions, MRFQuestionsView){
             console.log('committee-tab');
         });
 
-        $('.nav-tabs a').click(function (e) {
+    $('.nav-tabs a').click(function (e) {
             // No e.preventDefault() here
             $(this).tab('show');
         });
@@ -74,7 +75,13 @@ function($, _, Backbone, MRFQuestions, MRFQuestionsView){
             }
         });
 
-        this.loadView(new View({ el: $('#CommitteeViewContainer') }));
+        //this.loadView(new View({ el: $('#CommitteeViewContainer') }));
+        var c = new Committees();
+        c.fetch({
+            success: function(data) {
+                console.log(data);
+            }
+        });
     },
 
     loadView: function(view) {
