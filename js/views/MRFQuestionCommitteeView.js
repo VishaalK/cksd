@@ -2,15 +2,18 @@ define(['underscore', 'jquery', 'backbone', 'models/Committee', 'models/MRFQuest
 function(_, $, Backbone, Committee, MRFQuestion) {
 	var MRFQuestionCommitteeView = Backbone.View.extend({
 		tagName: 'li',
-		template: 'Name: <%= committeeName %>, Req: <%= hourReq %>',
+		template: '<a href="#"> <%= committeeName %> </a>',
+		id: 'committee-view-list',
 
 		initialize: function() {
 			this.listenTo(this.model, 'sync', this.render);
 		},
 
 		render: function() {
+			console.log('before');
 			var compiledTemplate = _.template(this.template);
 			return this.$el.html(compiledTemplate(this.model.attributes));
+			console.log('after');
 		}
 	});
 

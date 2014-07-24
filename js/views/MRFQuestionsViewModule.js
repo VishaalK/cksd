@@ -9,7 +9,7 @@ function(_, Backbone, $, MRFQuestionView, MRFQuestion) {
 					  </div> \
 					  <button type="button" id="add-question" class="btn btn-default">Create</button> \
 					</form> \
-					<ul class="list-unstyled"></ul> \
+					<ul id="questions-view-list" class="list-unstyled"></ul> \
 					',
 
 		events: {

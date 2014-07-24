@@ -5,6 +5,7 @@ function($, _, Backbone, MRFQuestion, mrfQuestionTemplate) {
 	var MRFQuestionView = Backbone.View.extend({
 		template: mrfQuestionTemplate,
 		tagName: 'li',
+		className: 'well',
 
 		initialize: function() {
 			// Remove this model if the question is deactivated

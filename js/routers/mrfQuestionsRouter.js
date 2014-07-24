@@ -21,7 +21,7 @@ function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestion
             console.log('committee-tab');
         });
 
-    $('.nav-tabs a').click(function (e) {
+        $('.nav-tabs a').click(function (e) {
             // No e.preventDefault() here
             $(this).tab('show');
         });
@@ -29,7 +29,11 @@ function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestion
         $('#close').click('click', function(e) {
             console.log('closing da views');
             if ($this.view) {
-                $this.view.close();
+                if ($this.view.close) {
+                    $this.view.close();
+                } else {
+                    $this.view.remove();
+                }
             }
         });
     },
@@ -40,40 +44,10 @@ function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestion
             success: function(coll) {
                 $this.loadView(new MRFQuestionsView({ collection: coll, el: $('#ViewContainer') }) );
             }
-        })
-        // create an overarching view here ?
-        // var prom = new MRFQuestions().fetch({
-        //     success: function(coll) {
-        //         cv = new MRFQuestionsView({ collection: coll, el: $('#ViewContainer') });
-        //         cv.render();
-        //     }
-        // });
-
-        // $.when(prom).then(function() {
-        //     $this.view = cv;
-        // });
-
+        });
     },
 
     committeeView: function() {
-        // var View = Backbone.View.extend({
-        //     template: '<div class="jumbotron"> \
-        //                     <h1>Hello, world!</h1> \
-        //                     <p> This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information. </p> \
-        //                     <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p> \
-        //                 </div>',
-
-        //     render: function() {
-        //         var compiledTemplate = _.template(this.template);
-        //         var data = {};
-        //         this.$el.append(compiledTemplate(data));
-        //     },
-        //     remove: function() {
-        //         this.$el.empty().off();
-        //         this.stopListening();
-        //         return this;
-        //     }
-        // });
         var self = this;
         var c = new Committees();
         c.fetch({

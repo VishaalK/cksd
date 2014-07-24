@@ -41,6 +41,17 @@
 		.check :hover {
 			color: #FFFFFF;
 		}
+		li#committee-view-list > a {
+			padding: 4px 20px;
+			color: #999;
+			font-size: 13px;
+			font-weight: 500;
+			display: block;
+		}
+		li#committee-view-list > a:hover {padding-left:19px;color:#563d7c;text-decoration:none;background-color:transparent;border-left:1px solid #563d7c}
+		li#questions-view-list {
+			padding: 10px 10px;
+		}
 		</style>
 	</head>
 	<body>
