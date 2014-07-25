@@ -26,6 +26,7 @@ function(_, $, Backbone, Committees, MRFQuestionCommitteeView) {
 			var promises = [];
 			var self = this;
 			self.subviews = [];
+			//todo, split that shit up into internal and external committees
 			$.each(this.collection.models, function(ind, obj) {
 				var v = new MRFQuestionCommitteeView({ model: obj });
 				self.subviews.push(v);
@@ -37,9 +38,11 @@ function(_, $, Backbone, Committees, MRFQuestionCommitteeView) {
 			});
 
 			$.when.apply($, promises).then(function() {
+				$this.$el.find('ul').append('<li class="dropdown-header"> All da vinsss </li>');
 				$this.$el.find('ul').append(container);
 			});
 
+			//TODO: make this not inline, and done from the stylesheet itself
 			this.$el.find('ul').css({
 				'padding': '5px 10px',
 				'whitespace': 'auto'

@@ -1,7 +1,7 @@
 <?php
 // get all da questions
 require '../../lib/db_connect.php';
-require 'Slim/Slim.php';
+require '../../vendor/Slim/Slim.php';
 
 \Slim\Slim::registerAutoloader();
 

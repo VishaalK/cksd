@@ -80,9 +80,17 @@
 		li#questions-view-list {
 			padding: 10px 10px;
 		}
+		img[name=internal], img[name=external] {
+			margin-top: -9px;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
 		</style>
 	</head>
 	<body>
+	<?php
+	// do some server shit
+	?> 
 	<div class="container-fluid" style="margin-top: 10px;">
 		<div style="text-align: left" class="col-md-3">Logged in as: Vishaal Kalwani</div>
 		<div style="text-align: left" class="col-md-3">You are: Executive Committee Member</div>
