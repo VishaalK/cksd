@@ -1,11 +1,19 @@
 define(['underscore', 'jquery', 'backbone', 'collections/Committees', 'views/MRFQuestionCommitteeView'],
 function(_, $, Backbone, Committees, MRFQuestionCommitteeView) {
 	var MRFQuestionCommitteesView = Backbone.View.extend({
-		template: '<ul class="list-unstyled pull-right"></ul>',
+		template: '<ul id="committee-view-list" class="list-unstyled pull-right"></ul>',
 		
-		initialize: function() {
+		initialize: function(options) {
 			this.listenTo(this.collection, 'reset', this.render);
-			console.log('initialized');
+			this.pathRoot = options.pathRoot;
+			this.listenTo(this.collection, 'selected', this.selectItem);
+		},
+
+		// updates the detail view with the specified model from the collection
+		selectItem: function(opts) {
+			console.log('select triggered');
+			console.log(opts);
+			// Backbone.history.navigate('committee-view/' + id, { trigger: true });
 		},
 
 		render: function() {
@@ -14,12 +22,13 @@ function(_, $, Backbone, Committees, MRFQuestionCommitteeView) {
 			var compiledTemplate = _.template(this.template);
 			this.$el.append(compiledTemplate(data));
 
-			console.log('rendering');
 			var container = document.createDocumentFragment();
 			var promises = [];
+			var self = this;
+			self.subviews = [];
 			$.each(this.collection.models, function(ind, obj) {
-				console.log(obj);
 				var v = new MRFQuestionCommitteeView({ model: obj });
+				self.subviews.push(v);
 				var promise = v.render();
 				promises.push(promise);
 				$.when(promise).then(function() {

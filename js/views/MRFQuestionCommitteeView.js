@@ -2,18 +2,32 @@ define(['underscore', 'jquery', 'backbone', 'models/Committee', 'models/MRFQuest
 function(_, $, Backbone, Committee, MRFQuestion) {
 	var MRFQuestionCommitteeView = Backbone.View.extend({
 		tagName: 'li',
-		template: '<a href="#"> <%= committeeName %> </a>',
-		id: 'committee-view-list',
+		template: '<a data-id=<%= committeeID %>> <%= committeeName %> </a>',
+
+		events: {
+			'click' : 'handleSelect'
+		},
+
+		handleSelect: function(e) {
+			this.select();	
+			this.model.trigger('selected', this.model.id);
+		},
+
+		select: function() {
+			this.$el.addClass('active');
+		},
+
+		deselect: function() {
+			this.$el.removeClass('active');
+		},
 
 		initialize: function() {
 			this.listenTo(this.model, 'sync', this.render);
 		},
 
 		render: function() {
-			console.log('before');
 			var compiledTemplate = _.template(this.template);
 			return this.$el.html(compiledTemplate(this.model.attributes));
-			console.log('after');
 		}
 	});
 

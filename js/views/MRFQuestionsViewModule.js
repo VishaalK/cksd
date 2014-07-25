@@ -96,18 +96,6 @@ function(_, Backbone, $, MRFQuestionView, MRFQuestion) {
 			$.when.apply($, promises).then(function() {
 				$this.$el.find('ul').append(container);
 			});
-			// var m = new MRFQuestion({ 
-			// 	id: 1, 
-			// 	internalCommittees: $this.internalCommittees, 
-			// 	externalCommittees: $this.externalCommittees,
-			// 	committees: $this.committees
-			// });
-			// var v = new MRFQuestionView({ model: m });
-			// var promise = v.render();
-			// $.when(promise).then(function() {
-			// 	$this.$el.find('ul').append(v.el);
-			// });
-			// m.fetch();
 		},
 
 		close: function() {

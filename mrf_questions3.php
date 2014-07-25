@@ -41,6 +41,28 @@
 		.check :hover {
 			color: #FFFFFF;
 		}
+		ul#committee-view-list > li > a {
+			padding: 4px 20px;
+			color: #999;
+			font-size: 13px;
+			font-weight: 500;
+			display: block;
+			cursor: pointer;
+		}
+		ul#committee-view-list > li.active > a, ul#committee-view-list > li.active > a:hover{
+			padding-left: 18px;
+			border-left: 2px solid #563d7c;
+			font-weight: 700;
+			color: #563d7c;
+			background-color: transparent;
+		}
+		ul#committee-view-list > li > a:hover {
+			padding-left:19px;
+			color:#563d7c;
+			text-decoration:none;
+			background-color:transparent;
+			border-left:1px solid #563d7c
+		}
 		li#committee-view-list > a {
 			padding: 4px 20px;
 			color: #999;
@@ -48,7 +70,13 @@
 			font-weight: 500;
 			display: block;
 		}
-		li#committee-view-list > a:hover {padding-left:19px;color:#563d7c;text-decoration:none;background-color:transparent;border-left:1px solid #563d7c}
+		li#committee-view-list > a:hover {
+			padding-left:19px;
+			color:#563d7c;
+			text-decoration:none;
+			background-color:transparent;
+			border-left:1px solid #563d7c
+		}
 		li#questions-view-list {
 			padding: 10px 10px;
 		}
