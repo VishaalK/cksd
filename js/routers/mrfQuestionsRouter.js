@@ -1,5 +1,5 @@
 define(['jquery','underscore','backbone','collections/MRFQuestionsModule', 'collections/Committees',
-        'views/MRFQuestionsViewModule', 'views/MRFQuestionCommitteesView', 'bootstrap', 'bootstrap-editable'], 
+        'views/MRFQuestionsViewModule', 'views/MRFQuestionCommitteesView2', 'bootstrap', 'bootstrap-editable'], 
 function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestionsCommitteesView){
     var AppRouter = Backbone.Router.extend({
         routes: {
@@ -13,13 +13,6 @@ function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestion
             this.route = window.location.pathname;
             $.fn.editable.defaults.mode = 'inline';
             var $this = this;
-            $('#question-tab').on('click', function(e) {
-                console.log('question-tab');
-            });
-
-            $('#committee-tab').on('click', function(e) {
-                console.log('committee-tab');
-            });
 
             $('.nav-tabs a').click(function (e) {
                 // No e.preventDefault() here
@@ -35,10 +28,6 @@ function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestion
                         $this.view.remove();
                     }
                 }
-            });
-
-            $('#butts').on('click', function(e) {
-
             });
         },
 
@@ -58,7 +47,10 @@ function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestion
             var c = new Committees();
             c.fetch({
                 success: function(data) {
-                    self.loadView(new MRFQuestionsCommitteesView({ collection: c, el: $('#Container2'), pathRoot: self.route }));               
+                    var x = self.loadView(new MRFQuestionsCommitteesView({ collection: c, el: $('#Container2'), pathRoot: self.route }));               
+                    $.when(x).then(function() {
+                        self.view.loadDetailPage(5);
+                    });
                 }
             });
         },
@@ -66,7 +58,7 @@ function($, _, Backbone, MRFQuestions, Committees, MRFQuestionsView, MRFQuestion
         loadView: function(view) {
             this.view && this.view.remove();
             this.view = view;
-            this.view.render();
+            return this.view.render();
         }
     });
 
