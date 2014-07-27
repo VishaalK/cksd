@@ -3,14 +3,26 @@ function(_, Backbone, $, MRFQuestionView, MRFQuestion) {
 	var MRFQuestionsView = Backbone.View.extend({
 		// tagName: 'ul',
 		className: 'list-unstyled',
-		template: '<form style="margin-top: 5px;" class="form-inline" role="form"> \
-					  <div class="form-group"> \
-					    <input style="min-width: 768px;" type="text" class="form-control" id="new-question" placeholder="Can I have some more, sir?"> \
-					  </div> \
-					  <button type="button" id="add-question" class="btn btn-default">Create</button> \
+
+		template: '<ul id="questions-view-list" class="list-unstyled"></ul> \
+					<form style="margin-top: 10px" class="form-horizontal" role="form"> \
+					 	<div class="form-group"> \
+					  		<div class="col-md-8 col-md-offset-2"> \
+					    		<input type="text" class="form-control" id="new-question" placeholder="Can I have some more, sir?"> \
+					  		</div> \
+					  		<button type="button" id="add-question" class="btn btn-default">Create</button> \
+				  		</div> \
 					</form> \
-					<ul id="questions-view-list" class="list-unstyled"></ul> \
 					',
+
+		// 			<form class="form-horizontal" role="form">
+  // <div class="form-group">
+  //   <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+  //   <div class="col-sm-10">
+  //     <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+  //   </div>
+  // </div>
+  // </form>
 
 		events: {
 			'click #add-question'	: 'addQuestion'

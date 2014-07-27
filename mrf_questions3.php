@@ -6,6 +6,10 @@
 		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
 		<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
 		<style> 
+/*		.navbar-brand {
+			margin-left: -53px !important;
+			padding-left: 0px;
+		}*/
 		.navbar-simple .brand {
 		 	padding-top: 15px;
 			padding-bottom: 15px;
@@ -110,13 +114,13 @@
 			margin-left: 5px;
 			margin-right: 5px;
 		}
+		body { padding-top: 50px; }
 		</style>
 	</head>
+
 	<body>
-	<?php
-	// do some server shit
-	?> 
-	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<header>
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -125,55 +129,40 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#"> Circle K </a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
+            <!-- TODO: turn this into actual links -->
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li><a href="#contact">Calendar</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="#join"> Join Now! </a></li>
+            <li class="hidden-xlg hidden-md hidden-sm"><a href="#houseCompetition"> House Competition </a></li>
+            <li class="hidden-md hidden-sm"><a href="#ltvp">Long Term Volunteer Positions </a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Default</a></li>
-            <li><a href="#">Static top</a></li>
-            <li class="active"><a href="./">Fixed top</a></li>
+            <p class="navbar-text" style="margin-right: -1px;">Logged in as: </p>
+            <li class="dropdown">
+            	<a class="dropdown-toggle" data-toggle="dropdown">Vishaal Kalwani <span class="caret"></span></a>
+            	<ul class="dropdown-menu" role="menu">
+            		<li><a href="#"> Admin </a></li>
+            		<li><a href="#"> My Service Hours </a></li>
+            		<li><a href="#"> My Projects </a></li>
+            		<li><a href="#"> Profile </a></li>
+            		<li><a href="#"> Log out </a></li>
+            	</ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-	<div class="navbar navbar-your-class navbar-static-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></button> <a class="brand" href="#">Your Logo</a>
-		        <div class="nav-collapse collapse">
-		        	<ul class="nav">
-		            	<li class="active"><a href="#">Home</a></li>
-		                <li><a href="#about">About</a></li>
-		                <li><a href="#contact">Contact</a></li>
-		             </ul>
-		     	</div><!--/.nav-collapse -->
-		     </div>
-		</div>
-	</div>
 	</header>
-	<div class="container-fluid" style="margin-top: 10px;">
-		<div style="text-align: left" class="col-md-3">Logged in as: Vishaal Kalwani</div>
-		<div style="text-align: left" class="col-md-3">You are: Executive Committee Member</div>
-		<div style="text-align: right" class="col-md-3">Admin</div>
-		<div style="text-align: right" class="col-md-3">Logout</div>
-	</div>
+	<?php
+	// do some server shit
+	?> 
+
 	<div class="container-fluid">
 
 		<div class="text-center">
@@ -181,13 +170,13 @@
 		</div> 
 	</div>
 	<div class="container-fluid" id="QuestionContainer"> 
-		<ul class="nav nav-tabs" role="tablist">
+		<ul class="nav nav-tabs nav-justified" role="tablist">
 			<li><a id="question-tab" href="#question-view" role="tab" >View by Question</a></li>
 			<li><a id="committee-tab" href="#committee-view" role="tab">View by Committee</a></li>
 		</ul>
 	</div>
 
-	<div class="container-fluid" id="ViewContainer">
+	<div class="container-fluid" id="ViewContainer" style="margin-top: 10px;">
 	</div>
 
 	<div class="container-fluid" id="CommitteeViewContainer" style="margin: 5px 5px;">

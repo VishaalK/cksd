@@ -24,11 +24,12 @@
         return this.loadDetailPage(id);
       },
       render: function() {
-        var committeeView, compiledTemplate, container, data, individualTemplate, self;
+        var committeeView, compiledTemplate, container, data, self;
         self = this;
         data = {};
         compiledTemplate = _.template(this.template);
         this.$el.append(compiledTemplate(data));
+        this.$el.find('.col-md-10').append(' Ello poppet. Ello poppet. Ello poppet.Ello poppet. Ello poppet.Ello poppet. Ello poppet. Ello poppet. v Ello poppet. Ello poppet. v v Ello poppet. v Ello poppet.');
         committeeView = Backbone.View.extend({
           template: _.template('<li><a data-id=<%= committeeID %>> <%= committeeName %> </a></li>'),
           render: function() {
@@ -36,7 +37,6 @@
           }
         });
         this.$el.find('ul').append('<li class="dropdown-header"> All da vinsss </li>');
-        individualTemplate = _.template('<li><a data-id=<%= committeeID %>> <%= committeeName %> </a></li>');
         container = document.createDocumentFragment();
         $.each(this.collection.models, function(ind, obj) {
           self.$el.find('ul').append('<li><a data-id=' + obj.get('committeeID') + '>' + obj.get('committeeName') + '</a></li>');

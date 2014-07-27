@@ -27,6 +27,10 @@ define ['underscore', 'jquery', 'backbone',
 					data = {}
 					compiledTemplate = _.template this.template
 					this.$el.append(compiledTemplate(data))
+					this.$el.find('.col-md-10').append(' \
+						Ello poppet. Ello poppet. Ello poppet.Ello poppet. Ello poppet.Ello poppet. \
+						Ello poppet. Ello poppet. v Ello poppet. Ello poppet. v v Ello poppet. v Ello poppet.')
+
 
 					committeeView = Backbone.View.extend {
 						template: _.template('<li><a data-id=<%= committeeID %>> <%= committeeName %> </a></li>')
