@@ -25,14 +25,16 @@ $app->get('/:id', function ($id) use ($app) {
 });
 
 $app->post('/', function() use ($app) {
-	$data = $app->request->params();
-	/*$query = "INSERT INTO CKSD201_projects 
-				(name, description, siteLeader, startDate, endDate, status, isDropIn, bigGroupFriendly, needsDriver, maxSignups)
-				VALUES (:name, :description, :siteLeader, :startDate, :endDate, :status, :isDropIn, :bigGroupFriendly, :needsDriver, :maxSignups);";
-	*/
+	global $mysqli;
+	$data = $app->request->params(); //its an assoc array
+	echo json_encode($data);
+	//escape and sanitize the inputs, actually that stuff doesn't work and might not be necessary
+	// $escaped_name = $mysqli->real_scape_string($data['first_name']);
+	// echo $escaped_name;
+	$query = "INSERT INTO PeopleInfo (unq, first_name, last_name, email, password, salt) VALUES \ 
+				VALUES (:unq, :first_name, :last_name, :email, :password, :salt);";
 	$stmt = $mysqli->prepare($query);
-	$query->execute();
-
+	//$query->execute();
 });
 
 $app->put('/:id', function($id) use ($app) {
