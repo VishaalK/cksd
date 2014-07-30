@@ -75,6 +75,8 @@ require('lib/db_connect.php');
 
 	<script type="text/javascript" src="js/lib/jquery/jquery-1.10.2.js"></script>
 	<script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>	
+	<script type="text/javascript" src="js/lib/underscore/underscore.min.js"></script>
+	<script type="text/javascript" src="js/lib/backbone/backbone.min.js"></script>
 	</body>
 
 </html>

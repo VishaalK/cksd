@@ -26,15 +26,29 @@ $app->get('/:id', function ($id) use ($app) {
 
 $app->post('/', function() use ($app) {
 	global $mysqli;
-	$data = $app->request->params(); //its an assoc array
-	echo json_encode($data);
-	//escape and sanitize the inputs, actually that stuff doesn't work and might not be necessary
-	// $escaped_name = $mysqli->real_scape_string($data['first_name']);
-	// echo $escaped_name;
-	$query = "INSERT INTO PeopleInfo (unq, first_name, last_name, email, password, salt) VALUES \ 
-				VALUES (:unq, :first_name, :last_name, :email, :password, :salt);";
+	$data = $app->request->params(); 
+	// check if that uniqname or that e-mail exists
+	$query = "SELECT * FROM PeopleInfo WHERE unq=:unq OR email=:email";
 	$stmt = $mysqli->prepare($query);
-	//$query->execute();
+	$stmt->bindValue('unq', strip_tags($data['unq']));
+	$stmt->bindValue('email', strip_tags($data['email']));
+	$result = $stmt->execute();
+	if ($stmt->rowCount() >= 1) {
+		$app->response->setStatus(409);
+		//json_encode({ error: 'User with that username or e-mail already exists'});
+		$app->response->write(json_encode({ 'error': 'User with that username or e-mail already exists!'} ));
+	}
+
+	// $query = "INSERT INTO PeopleInfo (unq, first_name, last_name, email, password, salt) VALUES \ 
+	// 			VALUES (:unq, :first_name, :last_name, :email, :password, :salt);";
+	// $stmt = $mysqli->prepare($query);
+	// foreach ($data as $key => $value) {
+ //    	$stmt->bindValue($key, strip_tags($value));  // bind the value to the statement
+	// }	
+	// if (!($result = $stmt->execute())) {
+			//$app->response->setStatus(500);
+	//		$app->response->write(json_encode($stmt->errorInfo()))
+	// };
 });
 
 $app->put('/:id', function($id) use ($app) {
