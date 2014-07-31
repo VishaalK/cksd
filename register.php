@@ -1,5 +1,5 @@
 <?php 
-require('lib/db_connect.php');
+require_once('lib/db_connect.php');
 
 ?>
 <!DOCTYPE html5>
@@ -60,7 +60,7 @@ require('lib/db_connect.php');
 	  <div class="form-group">
 	    <label for="password_confirm" class="col-sm-2 control-label">Confirm Password</label>
 	    <div class="col-sm-4">
-	      <input type="password" class="form-control" name="password_form" placeholder="Confirm">
+	      <input type="password" class="form-control" name="password_confirm" placeholder="Confirm">
 	    </div>
 	  </div>
 
