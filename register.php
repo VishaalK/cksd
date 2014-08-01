@@ -19,8 +19,8 @@ require_once('lib/db_connect.php');
 	<body>
 	<?php require('lib/header.php') ?>
 	<div class="container-fluid" style="margin-top: 10px;">
-	<div class="row">
-	<div class="col-md-offset-3">
+		<div class="row">
+			<div class="col-md-offset-3">
 	<form class="form-horizontal" role="form" action="_api/users/index.php" method="post">
 	  <div class="form-group">
 	    <label for="unq" class="col-sm-2 control-label">Uniqname</label>
@@ -70,7 +70,28 @@ require_once('lib/db_connect.php');
 	    </div>
 	  </div>
 	</form>
-	</div></div>
+
+	<form class="form-horizontal" role="form" action="_api/users/index.php/login" method="post">
+		<div class="form-group">
+		    <label for="unq" class="col-sm-2 control-label">Uniqname</label>
+		    <div class="col-sm-4">
+	    	 	<input type="text" class="form-control" name="unq" placeholder="unq">
+	    	</div>
+	  	</div>
+	  	<div class="form-group">
+		    <label for="first_name" class="col-sm-2 control-label"> Password </label>
+		    <div class="col-sm-4">
+		      	<input type="password" class="form-control" name="password">
+		    </div>
+	  	</div>
+	  	<div class="form-group">
+	    	<div class="col-sm-offset-2 col-sm-4">
+	      		<button type="submit" class="btn btn-success">Submit</button>
+	    	</div>
+	  	</div>
+	</form> 
+			</div>
+		</div>
 	</div>
 
 	<script type="text/javascript" src="js/lib/jquery/jquery-1.10.2.js"></script>

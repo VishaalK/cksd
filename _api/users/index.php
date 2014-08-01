@@ -27,21 +27,41 @@ $app->get('/:id', function ($id) use ($app) {
 $app->post('/login', function() use ($app) {
 	global $mysqli;
 	$dataIn = $app->request->params();
-	$persistent = $dataIn['remember_me'];
+	// $persistent = $dataIn['remember_me'];
 
 	$unq = $dataIn['unq'];
 	$findUser = $mysqli->prepare("SELECT * FROM PeopleInfo WHERE unq=:unq");
-	if (!$findUser>execute()) {
+	$findUser->bindParam('unq', $unq);
+
+	if (!$findUser->execute()) {
 		$app->response->setStatus(500);
-		$app->response->write(json_encode('error' => $mysqli->errorInfo()));
+		$app->response->write(json_encode(array('error' => $mysqli->errorInfo())));
+		session_unset();
+		return;
 	}
-	$userInfo = $findUser->fetchObject(PDO::FETCH_OBJ);
+	if ($findUser->rowCount() < 1) {
+		$app->response->setStatus(400);
+		$app->response->write(json_encode(array('error' => 'There is no user with that name!')));
+		session_unset();
+		return;
+	}
+	$userInfo = $findUser->fetchObject();
 	$password = $dataIn['password'];
-	$saltAndHash = $userInfo['password'];
+	$saltAndHash = $userInfo->{'password'};
 	if (!password_verify($password, $saltAndHash)) {
 		$app->response->setStatus(400);
-		$app->response->write(json_encode('error' => 'Invalid password!'));
+		$app->response->write(json_encode(array('error' => 'Invalid password!')));
+		session_unset();
+		return;
 	}
+	//user exists, password verified, log zem in!
+	//TODO: set cookie and persist sessions
+	echo "got here";
+	$_SESSION['logged_in'] = false;
+	$_SESSION['uniqname'] = $userInfo->{'unq'};
+	$_SESSION['first_name'] = $userInfo->{'first_name'};
+	$_SESSION['last_name'] = $userInfo->{'last_name'};
+	$_SESSION['email'] = $userInfo->{'email'};
 
 	// if (array_key_exists('logged_in', $_SESSION) || !array_key_exists('umck-login', $_COOKIE) {
 
