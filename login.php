@@ -9,12 +9,6 @@ require_once('lib/db_connect.php');
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
 		<meta charset="utf-8">
-		<style>
-		body {
-			padding-top: 50px;
-		}
-
-		</style>
 	</head>
 	<body>
 	<div class="container-fluid" style="margin-top: 10px;">

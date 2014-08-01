@@ -25,6 +25,7 @@ $app->get('/:id', function ($id) use ($app) {
 });
 
 $app->post('/login', function() use ($app) {
+	ob_start();
 	global $mysqli;
 	$dataIn = $app->request->params();
 	// $persistent = $dataIn['remember_me'];
@@ -56,13 +57,24 @@ $app->post('/login', function() use ($app) {
 	}
 	//user exists, password verified, log zem in!
 	//TODO: set cookie and persist sessions
-	echo "got here";
-	$_SESSION['logged_in'] = false;
+	// echo "got here";
+	$_SESSION['logged_in'] = true;
 	$_SESSION['uniqname'] = $userInfo->{'unq'};
 	$_SESSION['first_name'] = $userInfo->{'first_name'};
 	$_SESSION['last_name'] = $userInfo->{'last_name'};
 	$_SESSION['email'] = $userInfo->{'email'};
 
+	if (array_key_exists('URI', $_SESSION)) {
+		$requestUri = $_SESSION['URI'];
+		// echo 'http://localhost' . $requestUri;
+		try {
+			header("Location: http://localhost" . $requestUri);
+		} catch(Exception $e) {
+			echo "booty meat";
+		}
+	}
+	// ob_end_flush();
+	return;
 	// if (array_key_exists('logged_in', $_SESSION) || !array_key_exists('umck-login', $_COOKIE) {
 
 	// }
