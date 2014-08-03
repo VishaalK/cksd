@@ -1,47 +1,54 @@
-<?php 
+<?php
+if (empty($_POST)) {
+	header("Location: new404.html");
+	// redirect to 404 not found die();
+	exit;
+}
 require_once('lib/db_connect.php');
 
-?>
-<!DOCTYPE html5>
-<html lang="en">
-	<head>
-		<title> Join </title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
-		<meta charset="utf-8">
-	</head>
-	<body>
-	<div class="container-fluid" style="margin-top: 10px;">
-		<div class="row">
-			<div class="col-md-offset-3">
+ob_start();
+global $mysqli;
+$unq = $_POST['unq'];
 
-	<form class="form-horizontal" role="form" action="_api/users/index.php/login" method="post">
-		<div class="form-group">
-		    <label for="unq" class="col-sm-2 control-label">Uniqname</label>
-		    <div class="col-sm-4">
-	    	 	<input type="text" class="form-control" name="unq" placeholder="unq">
-	    	</div>
-	  	</div>
-	  	<div class="form-group">
-		    <label for="first_name" class="col-sm-2 control-label"> Password </label>
-		    <div class="col-sm-4">
-		      	<input type="password" class="form-control" name="password">
-		    </div>
-	  	</div>
-	  	<div class="form-group">
-	    	<div class="col-sm-offset-2 col-sm-4">
-	      		<button type="submit" class="btn btn-success">Submit</button>
-	    	</div>
-	  	</div>
-	</form> 
-			</div>
-		</div>
-	</div>
+/**
+ * Finds the user given the uniqname
+ * @param unq uniqname
+ * @return returns true if user found, false otherwise
+ */	
+$findUser = $mysqli->prepare("SELECT * FROM PeopleInfo WHERE unq=:unq");
+$findUser->bindParam('unq', $unq);
 
-	<script type="text/javascript" src="js/lib/jquery/jquery-1.10.2.js"></script>
-	<script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>	
-	<script type="text/javascript" src="js/lib/underscore/underscore.min.js"></script>
-	<script type="text/javascript" src="js/lib/backbone/backbone.min.js"></script>
-	</body>
+if (!$findUser->execute()) {
+	// Log an error here!
+	session_unset();
+	die('There was an error logged you in. Please contact the tech committee if this error persists');
+}
 
-</html>
+if ($findUser->rowCount() < 1) {
+	session_unset();
+	die('There is no user with that name.');
+}
+$userInfo = $findUser->fetchObject();
+$saltAndHash = $userInfo->{'password'};
+$password = $_POST['password'];
+
+if (!password_verify($password, $saltAndHash)) {
+	session_unset();
+	die('Incorrect password');
+}
+
+$_SESSION['logged_in'] = true;
+$_SESSION['uniqname'] = $userInfo->{'unq'};
+$_SESSION['first_name'] = $userInfo->{'first_name'};
+$_SESSION['last_name'] = $userInfo->{'last_name'};
+$_SESSION['email'] = $userInfo->{'email'};
+
+
+if (array_key_exists('URI', $_SESSION)) {
+	$requestUri = $_SESSION['URI'];
+	header("Location: http://localhost" . $requestUri);
+} else {
+	header("Location: admin.php");
+}
+// ob_end_flush();
+
