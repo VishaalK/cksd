@@ -26,7 +26,7 @@ if (!array_key_exists('logged_in', $_SESSION) || !$_SESSION['logged_in']) {
 	<?php require_once('lib/header.php') ?>
 	<div class="container-fluid" style="margin-top: 10px;">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-1">
+			<div class="col-md-6">
 				<h3> General Member Links </h3>
 				<ul class='list-unstyled'>
 					<li><a href='pw_change.php'>Change My Password</a></li>
@@ -41,7 +41,7 @@ if (!array_key_exists('logged_in', $_SESSION) || !$_SESSION['logged_in']) {
 					<li><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7ACQ6S5495A9N' target='_blank'> <img src='http://i.imgur.com/tRd0iTS.jpg' width='106px' height='34px' /> </a> </li>
 				</ul>
 			</div>
-			<div class="col-md-4 col-md-offset-2">
+			<div class="col-md-6">
 				<h3>Committee Link</h3>
 				<ul class='list-unstyled'>
 					<li><a href='mem_req_view.php'>My Requirements</a></li>
@@ -54,7 +54,7 @@ if (!array_key_exists('logged_in', $_SESSION) || !$_SESSION['logged_in']) {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 col-md-offset-1">
+			<div class="col-md-6">
 				<h3>Chair Links</h3>
 				<ul class='list-unstyled'>
 					<li><a href='./documents/CircleKLetterhead.docx'>Letter Head</a></li>
@@ -70,7 +70,7 @@ if (!array_key_exists('logged_in', $_SESSION) || !$_SESSION['logged_in']) {
 					<li><a href='directory_board.php'>Member Directory - View By Year</a></li>
 				</ul>
 			</div>
-			<div class="col-md-4 col-md-offset-2">
+			<div class="col-md-6">
 				<h3>E-board Links</h3>
 				<ul class='list-unstyled'>
 					<li><a href='mrf_info.php'>MRF Information</a></li>
